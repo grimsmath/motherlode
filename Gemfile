@@ -43,3 +43,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use mongoid odm
 gem "mongoid", github: 'mongoid/mongoid'
+
+# Use devise for authentication
+gem "devise"
