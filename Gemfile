@@ -46,3 +46,6 @@ gem "mongoid", github: 'mongoid/mongoid'
 
 # Use devise for authentication
 gem "devise"
+
+# Use cancan for authorization
+gem "cancan"
