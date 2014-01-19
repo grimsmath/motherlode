@@ -44,6 +44,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use mongoid odm
 gem "mongoid", github: 'mongoid/mongoid'
 
+# Use for tree like structure in categories
+gem "mongoid-tree"
+
 # Use devise for authentication
 gem "devise"
 
