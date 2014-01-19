@@ -3,4 +3,5 @@ class Category
   include Mongoid::Tree
 
   field :title, type: String
+  field :description, type: String
 end
