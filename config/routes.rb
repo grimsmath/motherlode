@@ -1,4 +1,8 @@
 MotherlodeMongo::Application.routes.draw do
+  resources :categories
+
+  resources :nuggets
+
   devise_for :users
   resources :users
 
