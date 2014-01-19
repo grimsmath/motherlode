@@ -52,3 +52,6 @@ gem "devise"
 
 # Use cancan for authorization
 gem "cancan"
+
+# Use Twitter Bootstrap 3.x using SASS
+gem 'anjlab-bootstrap-rails', {require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'}

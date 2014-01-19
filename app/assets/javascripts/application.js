@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// Include all twitter's javascripts, revise to actual usage before deployment
+//= require twitter/bootstrap

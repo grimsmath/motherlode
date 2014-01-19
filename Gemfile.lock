@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 3250d5494a8fb2715d3a16e24c7b82f57266ff42
+  specs:
+    anjlab-bootstrap-rails (3.0.3.0)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: e7166cca28ef89b07a55c99d21a384f096363459
   specs:
@@ -138,6 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails!
   bcrypt-ruby (~> 3.0.0)
   cancan
   coffee-rails (~> 4.0.0)
