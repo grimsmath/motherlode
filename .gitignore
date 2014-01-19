@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignort .env to protect credentials
+.env
+
+# Supress .idea folder
+.idea
