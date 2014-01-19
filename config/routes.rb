@@ -1,4 +1,4 @@
-MotherlodeMongo::Application.routes.draw do
+Motherlode::Application.routes.draw do
   get "welcome/index"
   resources :categories
 
