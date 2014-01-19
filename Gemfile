@@ -54,4 +54,5 @@ gem "devise"
 gem "cancan"
 
 # Use Twitter Bootstrap 3.x using SASS
-gem 'anjlab-bootstrap-rails', {require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'}
+# gem 'anjlab-bootstrap-rails', {require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'}
+gem 'bootstrap-sass', '~> 3.0.3.0'
