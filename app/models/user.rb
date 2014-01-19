@@ -35,4 +35,5 @@ class User
   # field :locked_at,       :type => Time
   
   field :name, type: String
+  field :username, type: String
 end
