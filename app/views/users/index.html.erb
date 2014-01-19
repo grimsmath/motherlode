@@ -10,7 +10,6 @@
           <th>Username</th>
           <th>Name</th>
           <th>Email</th>
-          <th>Role</th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -21,7 +20,6 @@
             <td><%= user.username %></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
-            <td>&nbsp;</td>
             <td class="action_column">
               <%= link_to 'Show', user, class: "btn btn-default" %>
               <%= link_to 'Edit', edit_user_path(user), class: "btn btn-default"%>

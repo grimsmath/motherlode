@@ -36,4 +36,5 @@ class User
   
   field :name, type: String
   field :username, type: String
+  field :biography, type: String
 end
