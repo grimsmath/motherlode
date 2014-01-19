@@ -45,7 +45,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem "mongoid", github: 'mongoid/mongoid'
 
 # Use for tree like structure in categories
-gem "mongoid-tree"
+gem "mongoid-tree", :require => 'mongoid/tree'
 
 # Use devise for authentication
 gem "devise"
