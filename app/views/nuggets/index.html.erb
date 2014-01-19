@@ -1,0 +1,29 @@
+<h1>Listing nuggets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nuggets.each do |nugget| %>
+      <tr>
+        <td><%= nugget.title %></td>
+        <td><%= nugget.body %></td>
+        <td><%= link_to 'Show', nugget %></td>
+        <td><%= link_to 'Edit', edit_nugget_path(nugget) %></td>
+        <td><%= link_to 'Destroy', nugget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nugget', new_nugget_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @nugget.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @nugget.body %>
+</p>
+
+<%= link_to 'Edit', edit_nugget_path(@nugget) %> |
+<%= link_to 'Back', nuggets_path %>
