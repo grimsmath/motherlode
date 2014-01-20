@@ -1,0 +1,24 @@
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><%= @category.title %></h4>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-8">
+          <%= render "categories/show/details" %>
+          <%= render "categories/show/nuggets" %>
+        </div>
+
+        <div class="col-lg-4">
+          <%= render "categories/show/subcategories" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <%= link_to 'Add Nugget', new_nugget_path, class: "btn btn-primary" %>
+      <%= link_to 'Back', :back, class: "btn btn-default" %>
+    </div>
+  </div>

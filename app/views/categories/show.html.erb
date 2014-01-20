@@ -1,62 +1,11 @@
 <div class="container down-20px">
-  <div class="col-md-12">
-    <% unless @category.parent.nil? %>
-      <ol class="breadcrumb">
-        <% @category.ancestors.reverse.each do |category| %>
-          <li><%= link_to category.name, category %></li>
-        <% end %>
-        <li class="current">
-          <%= link_to @category.name, @category %>
-        </li>
-      </ol>
-    <% end %>
-  </div>
+  <% render "categories/crumbs" %>
 
   <div class="col-md-12">
     <% unless @category.parent.nil? %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><%= @category.name %></h4>
-        </div>
-
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-8">
-              <%= render "categories/show/details" %>
-              <%= render "categories/show/nuggets" %>
-            </div>
-
-            <div class="col-lg-4">
-              <%= render "categories/show/subcategories" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel-footer">
-          <%= link_to 'Add Nugget', new_nugget_path, class: "btn btn-primary" %>
-          <%= link_to 'Back', :back, class: "btn btn-default" %>
-        </div>
-      </div>
+      <% render "categories/details" %>
     <% else %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Categories</h4>
-        </div>
-        <ul class="list-group">
-
-        </ul>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Categories for <%= @category.title %></div>
-        <ul class="list-group">
-          <% @category.children.each do |child_category| %>
-            <li class="list-group-item">
-              <%= link_to child_category.name, child_category %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+      <% render "categories/children" %>
     <% end %>
   </div>
 </div>

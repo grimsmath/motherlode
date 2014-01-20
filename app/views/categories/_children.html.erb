@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Categories</h4>
+  </div>
+  <ul class="list-group">
+
+  </ul>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Categories for <%= @category.title %></div>
+  <ul class="list-group">
+    <% @category.children.each do |child_category| %>
+      <li class="list-group-item">
+        <%= link_to child_category.title, child_category %>
+      </li>
+    <% end %>
+  </ul>
+</div>
