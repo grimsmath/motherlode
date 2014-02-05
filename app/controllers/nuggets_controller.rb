@@ -69,6 +69,6 @@ class NuggetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nugget_params
-      params.require(:nugget).permit(:title, :body)
+      params.require(:nugget).permit(:title, :body, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
     end
 end

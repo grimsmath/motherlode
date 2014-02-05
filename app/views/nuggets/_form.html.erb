@@ -1,4 +1,4 @@
-<%= form_for(@nugget) do |f| %>
+<%= nested_form_for @nugget do |f| %>
   <% if @nugget.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@nugget.errors.count, "error") %> prohibited this nugget from being saved:</h2>
@@ -15,10 +15,23 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
-  </div>
+  <%= f.fields_for :contents do |contents_form| %>
+    <%= f.label 'Contents Name' %><br>
+    <%= contents_form.text_field :name %>
+    <%= contents_form.text_area :content %>
+    <%= contents_form.link_to_remove "Remove this content" %>
+  <% end %>
+
+  <%= f.fields_for :images do |images_form| %>
+    <%= f.label 'Title' %><br>
+    <%= images_form.text_field :title %>
+    <%= images_form.text_area :caption %>
+    <%= images_form.file_field :content %>
+    <%= images_form.link_to_remove "Remove this image" %>
+  <% end %>
+
+  <p><%= f.link_to_add "Add content", :contents %> <%= f.link_to_add "Add images", :images %></p>
+
   <div class="actions">
     <%= f.submit %>
   </div>
