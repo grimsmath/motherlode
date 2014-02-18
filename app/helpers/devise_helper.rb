@@ -9,7 +9,7 @@ module DeviseHelper
 
     html = <<-HTML
     <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert">x</button>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
       <h4>#{sentence}</h4>
       #{messages}
     </div>

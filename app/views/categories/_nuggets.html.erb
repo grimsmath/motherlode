@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Nuggets</h4>
+  </div>
+
+  <div class="panel-body">
+    <% @category.children.each do |nugget| %>
+      <li class="list-group-item">
+        <%= link_to nugget.title, nugget %>
+      </li>
+    <% end %>
+  </div>
+</div>

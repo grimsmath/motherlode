@@ -1,6 +1,24 @@
-<h1>Editing nugget</h1>
+<div class="container down-20px">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4>Edit Nugget</h4>
+    </div>
 
-<%= render 'form' %>
+    <div class="panel-body">
+      <%= render 'form' %>
+    </div>
 
-<%= link_to 'Show', @nugget %> |
-<%= link_to 'Back', nuggets_path %>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary">Save Nugget</button>
+      <%= link_to 'Back', nuggets_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('button[type="submit"]').click(function() {
+      $('form').submit();
+    })
+  })
+</script>

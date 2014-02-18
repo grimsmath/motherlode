@@ -1,38 +1,54 @@
 <%= nested_form_for @nugget do |f| %>
   <% if @nugget.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@nugget.errors.count, "error") %> prohibited this nugget from being saved:</h2>
+  <div class="alert alert-danger" id="error_explanation">
+    <h2><%= pluralize(@nugget.errors.count, "error") %> prohibited this nugget from being saved:</h2>
 
-      <ul>
-      <% @nugget.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <ul>
+    <% @nugget.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "Nugget Title" %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <%= f.fields_for :contents do |contents_form| %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="form-group">
+        <%= f.label :name, "Content Title" %><br>
+        <%= contents_form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content, "Content Body" %><br>
+        <%= contents_form.text_area :content, class: "form-control" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <%= f.fields_for :contents do |contents_form| %>
-    <%= f.label 'Contents Name' %><br>
-    <%= contents_form.text_field :name %>
-    <%= contents_form.text_area :content %>
-    <%= contents_form.link_to_remove "Remove this content" %>
-  <% end %>
-
   <%= f.fields_for :images do |images_form| %>
-    <%= f.label 'Title' %><br>
-    <%= images_form.text_field :title %>
-    <%= images_form.text_area :caption %>
-    <%= images_form.file_field :content %>
-    <%= images_form.link_to_remove "Remove this image" %>
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="form-group">
+        <%= f.label :title, 'Image Title' %><br>
+        <%= images_form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :caption, "Image Caption" %><br>
+        <%= images_form.text_area :caption, class: "form-control" %>
+        <%= images_form.file_field :content %>
+      </div>
+    </div>
   <% end %>
 
-  <p><%= f.link_to_add "Add content", :contents %> <%= f.link_to_add "Add images", :images %></p>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.link_to_add "Add Content", :contents, class: "btn btn-default" %>
+    <%= f.link_to_add "Add Image", :images, class: "btn btn-default" %>
   </div>
 <% end %>

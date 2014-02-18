@@ -6,8 +6,13 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <style>
+    body {
+      padding-top: 70px;
+    }
+  </style>
 </head>
-<body class="down-50px">
+<body role="document" >
 
 <%= render "partials/sitenav" %>
 <%= render "partials/sitealert" %>

@@ -1,11 +1,13 @@
-<div class="container down-20px">
-  <% render "categories/crumbs" %>
+<div class="container">
+  <div class="row">
+    <% render "crumbs" %>
 
-  <div class="col-md-12">
-    <% unless @category.parent.nil? %>
-      <% render "categories/details" %>
-    <% else %>
-      <% render "categories/children" %>
-    <% end %>
+    <div class="col-md-12">
+      <% unless @category.parent.nil? %>
+        <%= render 'categories/details' %>
+      <% else %>
+        <%= render 'categories/children' %>
+      <% end %>
+    </div>
   </div>
 </div>
