@@ -1,9 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><%= @nugget.title %></h4>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @nugget.title %>
-</p>
+    <div class="panel-body">
+      <% @nugget.contents.each do |content| %>
+        <h4><%= content.name %></h4>
+        <p><%= content.content %></p>
+      <% end %>
 
-<%= link_to 'Edit', edit_nugget_path(@nugget) %> |
-<%= link_to 'Back', nuggets_path %>
+      <% @nugget.images.each do |image| %>
+        <div>
+          <%= JSON.decode(image.content) %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="panel-footer">
+      <%= link_to 'Edit Nugget', edit_nugget_path(@nugget), class: 'btn btn-primary' %>
+      <%= link_to 'Back', nuggets_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
