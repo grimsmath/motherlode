@@ -5,6 +5,4 @@ class Category
   field :title, type: String
   field :description, type: String
   field :active, type: Boolean
-  field :parent, type: Category
-  field :child, type: Category
 end
