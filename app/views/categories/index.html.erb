@@ -1,4 +1,4 @@
-<div class="container down-20px">
+<div class="container">
   <div class="panel panel-success">
     <div class="panel-heading">
       <h4>Available Categories</h4>
@@ -9,21 +9,25 @@
         <thead>
         <tr>
           <th>Name</th>
-          <th>Description</th>
+          <th>Parent Category</th>
+          <th>Child Category</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
           <% @categories.each do |category| %>
-            <tr>
-              <td><%= link_to category.title, category %></td>
-              <td><%= category.description %></td>
-              <td class="action_column">
-                <%= link_to 'Show', category, class: "btn btn-default" %>
-                <%= link_to 'Edit', edit_category_path(category), class: "btn btn-default" %>
-                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-              </td>
-            </tr>
+          <tr>
+            <td><h5><%= link_to category.title, category %></h5></td>
+            <td><h5>&nbsp;</h5></td>
+            <td><h5>&nbsp;</h5></td>
+            <td><h5>&nbsp;</h5></td>
+            <td class="action_column">
+              <%= link_to 'Show', category, class: "btn btn-default" %>
+              <%= link_to 'Edit', edit_category_path(category), class: "btn btn-default" %>
+              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+            </td>
+          </tr>
           <% end %>
         </tbody>
         <tfoot>
