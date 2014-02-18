@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><%= @nugget.title %></h4>
+    </div>
 
 <p>
   <strong>Title:</strong>
@@ -8,6 +13,16 @@
   <strong>Category:</strong>
 	<%= link_to @nugget.category.title, @nugget.category unless @nugget.category.nil? %>
 </p>
+      <% @nugget.images.each do |image| %>
+        <div>
+          <%= JSON.decode(image.content) %>
+        </div>
+      <% end %>
+    </div>
 
-<%= link_to 'Edit', edit_nugget_path(@nugget) %> |
-<%= link_to 'Back', nuggets_path %>
+    <div class="panel-footer">
+      <%= link_to 'Edit Nugget', edit_nugget_path(@nugget), class: 'btn btn-primary' %>
+      <%= link_to 'Back', nuggets_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
