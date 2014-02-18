@@ -1,15 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>Subcategories</h4>
+    <h4><%= @category.title %></h4>
   </div>
 
   <div class="panel-body">
-    <ul class="list-group">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">Subcategories</a>
       <% @category.children.each do |child_category| %>
-        <li class="list-group-item">
-          <%= link_to child_category.title, child_category %>
-        </li>
+        <%= link_to child_category.title, child_category, class: "list-group-item" %>
       <% end %>
-    </ul>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    &nbsp;
   </div>
 </div>

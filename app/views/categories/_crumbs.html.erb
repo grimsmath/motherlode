@@ -1,5 +1,6 @@
 <div class="col-md-12">
   <% unless @category.parent.nil? %>
+    <h1>Hello</h1>
     <ol class="breadcrumb">
       <% @category.ancestors.reverse.each do |category| %>
         <li><%= link_to category.title, category %></li>

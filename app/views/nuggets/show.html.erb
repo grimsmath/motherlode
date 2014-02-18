@@ -5,19 +5,9 @@
       <h4><%= @nugget.title %></h4>
     </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @nugget.title %>
-</p>
-<p>
-  <strong>Category:</strong>
-	<%= link_to @nugget.category.title, @nugget.category unless @nugget.category.nil? %>
-</p>
-      <% @nugget.images.each do |image| %>
-        <div>
-          <%= JSON.decode(image.content) %>
-        </div>
-      <% end %>
+    <div class="panel-body">
+      <%= @nugget.title %>
+      <%= link_to @nugget.category.title, @nugget.category unless @nugget.category.nil? %>
     </div>
 
     <div class="panel-footer">

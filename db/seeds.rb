@@ -5,3 +5,34 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all()
+
+User.create(email: 'david.king@unf.edu', name: 'David King', password: 'password')
+User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark', password: 'password')
+
+Category.destroy_all()
+
+# First Coast Green Map
+fcgm = Category.create(title: 'First Coast Green Map')
+
+fcgm.children << Category.create(title: 'Green Buildings')
+fcgm.children << Category.create(title: 'Community Gardens')
+fcgm.children << Category.create(title: 'Murray Hill Community Garden')
+
+# Park Experience
+pe = Category.create(title: 'Park Experience')
+
+# National Park Service (NPS)
+nps = Category.create(title: 'National Park Service')
+pe.children << nps
+
+nps.children << Category.create(title: 'Fort Caroline')
+nps.children << Category.create(title: 'Castillo de San Marco')
+
+# Florida State Parks
+flps = Category.create(title: 'Florida State Parks')
+pe.children << flps
+
+flps.children << Category.create(title: 'Little Talbot Island')
+flps.children << Category.create(title: 'Big Talbot Island')
