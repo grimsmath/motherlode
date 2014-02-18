@@ -1,5 +1,6 @@
 class Nugget
   include Mongoid::Document
+  belongs_to :category
   embeds_many :contents, cascade_callbacks: true
   embeds_many :images, cascade_callbacks: true
   accepts_nested_attributes_for :contents, :allow_destroy => true

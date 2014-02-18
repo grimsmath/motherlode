@@ -20,7 +20,7 @@
         <% @nuggets.each do |nugget| %>
           <tr>
             <td><h5><%= link_to nugget.title, nugget %></h5></td>
-            <td><h5>&nbsp;</h5></td>
+            <td><h5><%= link_to nugget.category.title, nugget.category unless nugget.category.nil? %></h5></td>
             <td><h5>&nbsp;</h5></td>
             <td><h5>&nbsp;</h5></td>
             <td class="action_column">

@@ -2,6 +2,8 @@ class Category
   include Mongoid::Document
   include Mongoid::Tree
 
+  has_many :nuggets
+
   field :title, type: String
   field :description, type: String
 end

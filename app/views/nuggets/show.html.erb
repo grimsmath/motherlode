@@ -4,6 +4,10 @@
   <strong>Title:</strong>
   <%= @nugget.title %>
 </p>
+<p>
+  <strong>Category:</strong>
+	<%= link_to @nugget.category.title, @nugget.category unless @nugget.category.nil? %>
+</p>
 
 <%= link_to 'Edit', edit_nugget_path(@nugget) %> |
 <%= link_to 'Back', nuggets_path %>
