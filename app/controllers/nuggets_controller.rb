@@ -1,5 +1,6 @@
 class NuggetsController < ApplicationController
   load_and_authorize_resource
+  skip_load_resource :only => [:create]
 
   before_action :set_nugget, only: [:show, :edit, :update, :destroy]
 
@@ -32,8 +33,6 @@ class NuggetsController < ApplicationController
       if @nugget.save
         format.html { redirect_to @nugget, notice: 'Nugget was successfully created.' }
         format.json { render action: 'show', status: :created, location: @nugget }
-        current_user.nugget_count += 1
-        current_user.save
       else
         format.html { render action: 'new' }
         format.json { render json: @nugget.errors, status: :unprocessable_entity }
@@ -73,6 +72,6 @@ class NuggetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nugget_params
-      params.require(:nugget).permit(:title, :body, :category_id, :user_id, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
+      params.require(:nugget).permit(:title, :category_id, :user_id, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
     end
 end
