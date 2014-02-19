@@ -19,7 +19,7 @@
       <div class="col-lg-12">
         <h1>Available Categories</h1>
         <div class="list-group">
-        <% @categories.each do |category| %>
+        <% @categories.where(parent_id: nil).each do |category| %>
             <%= link_to category.title, category, class: "list-group-item" %>
         <% end %>
         </div>
