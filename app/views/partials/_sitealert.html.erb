@@ -1,12 +1,10 @@
+<% flash.each do |key, value| %>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <% if flash[:notice] %>
-        <div class="alert alert-info">
-          <%= flash[:notice] %>
-          <a href="#" class="close" data-dismiss="alert">&times;</a>
-        </div>
-      <% end %>
+        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
     </div>
   </div>
 </div>
+<% end %>
