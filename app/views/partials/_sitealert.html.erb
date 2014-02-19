@@ -10,3 +10,18 @@
   </div>
 </div>
 <% end %>
+
+<script>
+  $(function() {
+    window.setTimeout(function() {
+      $(".alert")
+          .fadeOut(150)
+          .fadeIn(150)
+          .fadeOut(150)
+          .fadeIn(150)
+          .fadeOut(150)
+          .fadeIn(150)
+          .fadeOut(150).close();
+    }, 2000);
+  });
+</script>
