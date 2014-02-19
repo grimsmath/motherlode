@@ -39,7 +39,8 @@ class NuggetsController < ApplicationController
         end
       end
     else
-      format.html { 'Overlimit!' }
+      flash[:notice] = "Thank you for contributing, however new accounts must be approved by an administrator after five nugget submissions."
+      redirect_to root_url
     end
   end
 
