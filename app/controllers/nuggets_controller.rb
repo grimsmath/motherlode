@@ -14,7 +14,13 @@ class NuggetsController < ApplicationController
 
   # GET /nuggets/new
   def new
-    @nugget = Nugget.new
+    if current_user.approved || current_user.nugget_count < 6
+      @nugget = Nugget.new
+    else
+      flash[:notice] = "Thank you for contributing, however new accounts must be approved by an administrator after five nugget submissions."
+      redirect_to root_url
+    end
+
   end
 
   # GET /nuggets/1/edit
