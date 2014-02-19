@@ -17,11 +17,17 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Available Categories</h1>
         <div class="list-group">
-        <% @categories.where(parent_id: nil).each do |category| %>
-            <%= link_to category.title, category, class: "list-group-item" %>
-        <% end %>
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">Motherlode Projects</h4>
+            <p class="list-group-item-text">
+              From here you can drill down and find the category you would like to view, add nuggets, or manage.  If you have
+              any questions, please click on the "help" button above.
+            </p>
+          </a>
+          <% @categories.where(parent_id: nil).each do |category| %>
+          <%= link_to category.title, category, class: "list-group-item" %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -17,7 +17,14 @@
         <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><h5><%= link_to user.name, user %></h5></td>
+            <td>
+               <h5>
+                 <%= link_to user.name, user %>
+                 <% if user.admin? %>
+                    <span class="glyphicon glyphicon-star"></span>
+                 <% end %>
+               </h5>
+            </td>
             <td><h5><%= user.email %></h5></td>
             <td><h5>&nbsp;</h5></td>
             <td class="action_column">

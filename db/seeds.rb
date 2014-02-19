@@ -6,21 +6,30 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# remove all the users from the database
 User.destroy_all()
 
-User.create(email: 'david.king@unf.edu', name: 'David King', password: 'password')
-User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark', password: 'password')
+# =============================================
+# Users
+# =============================================
+User.create(email: 'david.king@unf.edu', name: 'David King', password: 'password', admin: true)
+User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark', password: 'password', admin: true)
 
+# remove all the old categories from the database
 Category.destroy_all()
 
+# =============================================
 # First Coast Green Map
+# =============================================
 fcgm = Category.create(title: 'First Coast Green Map')
 
 fcgm.children << Category.create(title: 'Green Buildings')
 fcgm.children << Category.create(title: 'Community Gardens')
 fcgm.children << Category.create(title: 'Murray Hill Community Garden')
 
+# =============================================
 # Park Experience
+# =============================================
 pe = Category.create(title: 'Park Experience')
 
 # National Park Service (NPS)
@@ -36,3 +45,4 @@ pe.children << flps
 
 flps.children << Category.create(title: 'Little Talbot Island')
 flps.children << Category.create(title: 'Big Talbot Island')
+
