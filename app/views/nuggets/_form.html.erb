@@ -21,7 +21,6 @@
     <%= f.collection_select :category_id, Category.all, :id, :title %>
   </div>
 
-
   <%= f.fields_for :contents do |contents_form| %>
   <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

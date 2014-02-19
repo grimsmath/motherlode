@@ -3,11 +3,7 @@
     <%= render "crumbs" %>
 
     <div class="col-md-12">
-      <% unless @category.parent.nil? %>
-        <%= render 'categories/details' %>
-      <% else %>
-        <%= render 'categories/children' %>
-      <% end %>
+      <%= render 'categories/details' %>
     </div>
   </div>
 </div>

@@ -1,6 +1,0 @@
-<div class="list-group">
-  <a href="#" class="list-group-item active">Subcategories</a>
-  <% @category.children.each do |child_category| %>
-    <%= link_to child_category.title, child_category, class: "list-group-item" %>
-  <% end %>
-</div>
