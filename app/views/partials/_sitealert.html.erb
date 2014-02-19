@@ -2,9 +2,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <div class="alert alert-info alert-<%= key %>">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <%= value %>
+      </div>
     </div>
   </div>
 </div>
 <% end %>
+
+<script>
+  $(function() {
+    window.setTimeout(function() {
+      $(".alert")
+          .fadeOut(150)
+          .fadeIn(150)
+          .fadeOut(150)
+          .fadeIn(150)
+          .fadeOut(150)
+          .fadeIn(150)
+          .fadeOut(150).close();
+    }, 2000);
+  });
+</script>
