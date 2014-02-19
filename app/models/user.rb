@@ -38,6 +38,12 @@ class User
   field :username, type: String
   field :biography, type: String
 
-  field :approved, type: Boolean
   field :nugget_count, type: Integer
+
+  field :admin, type: Boolean
+  field :approved, type: Boolean
+
+  def moderator
+    true
+  end
 end
