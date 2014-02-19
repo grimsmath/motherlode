@@ -6,6 +6,10 @@ class Ability
 
     can :index, Welcome
     can :read, Nugget
+    can :create, Nugget do |nugget|
+        user.approved? || Nugget.where(user: user).count < 5
+    end
+
     can :read, Category
     can [:show, :update], User, :id => user.id
 

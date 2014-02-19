@@ -32,23 +32,18 @@ class NuggetsController < ApplicationController
   # POST /nuggets
   # POST /nuggets.json
   def create
-    if current_user.approved || current_user.nugget_count < 6
-      @nugget = Nugget.new(nugget_params)
+    @nugget = Nugget.new(nugget_params)
 
-      respond_to do |format|
-        if @nugget.save
-          format.html { redirect_to @nugget, notice: 'Nugget was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @nugget }
-          current_user.nugget_count += 1
-          current_user.save
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @nugget.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @nugget.save
+        format.html { redirect_to @nugget, notice: 'Nugget was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @nugget }
+        current_user.nugget_count += 1
+        current_user.save
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @nugget.errors, status: :unprocessable_entity }
       end
-    else
-      flash[:notice] = "Thank you for contributing, however new accounts must be approved by an administrator after five nugget submissions."
-      redirect_to root_url
     end
   end
 
@@ -84,6 +79,6 @@ class NuggetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nugget_params
-      params.require(:nugget).permit(:title, :body, :category_id, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
+      params.require(:nugget).permit(:title, :body, :category_id, :user_id, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
     end
 end
