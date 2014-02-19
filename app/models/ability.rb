@@ -2,14 +2,14 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :index, Welcome
+    can :read, Nugget
+    can :read, Category
 
     user ||= User.new
-    if true
+    
+    if user.admin?
         can :manage, :all
-        can :index, WelcomeController
-    else
-        can :read, Nugget
-        can :read, Category
     end
 
 
