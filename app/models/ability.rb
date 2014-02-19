@@ -7,7 +7,7 @@ class Ability
     can :index, Welcome
     can :read, Nugget
     can :read, Category
-    can [:read, :update], User, :id => user.id
+    can [:show, :update], User, :id => user.id
 
     if user.admin?
         can :manage, :all
