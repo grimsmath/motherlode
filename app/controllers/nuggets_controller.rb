@@ -53,8 +53,6 @@ class NuggetsController < ApplicationController
   # PATCH/PUT /nuggets/1
   # PATCH/PUT /nuggets/1.json
   def update
-
-    binding.remote_pry  
     respond_to do |format|
       if @nugget.update(nugget_params)
         format.html { redirect_to @nugget, notice: 'Nugget was successfully updated.' }
