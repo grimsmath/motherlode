@@ -6,7 +6,11 @@ class NuggetPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.admin? || user.approved? || Nugget.where(user: user).count < 5
+  end
+
+  def new?
+    user.admin? || user.approved? || Nugget.where(user: user).count < 5
   end
 
   def edit?
