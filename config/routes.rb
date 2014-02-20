@@ -1,8 +1,9 @@
 Motherlode::Application.routes.draw do
+  get "images/show"
   get "welcome/index"
   resources :categories
-
   resources :nuggets
+  resources :images
 
   devise_for :users
   resources :users
