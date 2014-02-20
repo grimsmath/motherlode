@@ -42,7 +42,6 @@ GEM
       sass (~> 3.2)
     bson (2.2.1)
     builder (3.1.4)
-    cancan (1.6.10)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -97,6 +96,8 @@ GEM
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
+    pundit (0.2.2)
+      activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -156,7 +157,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 3.0.3.0)
-  cancan
   coffee-rails (~> 4.0.0)
   devise
   fontawesome-rails (~> 4.0.3.0)
@@ -167,6 +167,7 @@ DEPENDENCIES
   nested_form
   pry
   pry-remote
+  pundit
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
