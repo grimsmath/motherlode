@@ -7,4 +7,8 @@ class Category
   field :title, type: String
   field :description, type: String
   field :active, type: Boolean
+
+  def indented_title
+    '  ' * ancestors.count + title
+  end
 end
