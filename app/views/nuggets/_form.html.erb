@@ -27,7 +27,7 @@
   </div>
 
   <%= f.fields_for :contents do |contents_form| %>
-  <div class="alert alert-success">
+  <div class="well">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <div class="form-group">
       <%= f.label :name, "Content Title" %><br>
@@ -42,7 +42,7 @@
   <% end %>
 
   <%= f.fields_for :images do |images_form| %>
-  <div class="alert alert-info">
+  <div class="well">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <div class="form-group">
       <%= f.label :title, 'Image Title' %><br>
