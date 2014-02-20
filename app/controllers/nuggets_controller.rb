@@ -1,7 +1,4 @@
 class NuggetsController < ApplicationController
-  load_and_authorize_resource
-  skip_load_resource :only => [:create]
-
   before_action :set_nugget, only: [:show, :edit, :update, :destroy]
 
   # GET /nuggets
