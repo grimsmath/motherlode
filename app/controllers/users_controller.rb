@@ -71,6 +71,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def approve
+    authorize User
+    @user = User.find(params[:id])
+    @user.approved = true
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+    end
+  end
+
+  def unapprove
+    authorize User
+    @user = User.find(params[:id])
+    @user.approved = false
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

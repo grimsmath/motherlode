@@ -1,0 +1,19 @@
+.container
+  .panel.panel-warning
+    .panel-heading
+      %h4 Awaiting Approval
+    .panel-body
+      %table.table.table-striped.table-condensed
+        = render partial: 'table_heading'
+        %tbody
+          = render partial: 'user_listing', collection: @users.awaiting_approval
+  .panel.panel-primary
+    .panel-heading
+      %h4 Manage Users
+    .panel-body
+      %table.table.table-striped.table-condensed
+        = render partial: 'table_heading'
+        %tbody
+          = render partial: 'user_listing', collection: @users.authors_with_admins_first
+    .panel-footer
+      = link_to 'New User', new_user_path, class: 'btn btn-primary'

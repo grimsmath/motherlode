@@ -46,6 +46,10 @@ class User
   field :admin, type: Boolean
   field :approved, type: Boolean
 
+  scope :admins, ->{ where(admin: true) }
+  scope :awaiting_approval, ->{ excludes(approved: true) }
+  scope :authors_with_admins_first, ->{ order_by(admin: -1).where(approved: true, ) }
+
   def moderator
     true
   end

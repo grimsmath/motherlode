@@ -25,4 +25,12 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     @user.admin?
   end
+
+  def approve?
+    @user.admin?
+  end
+
+  def unapprove?
+    @user.admin?
+  end
 end

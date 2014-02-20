@@ -1,0 +1,12 @@
+%tr
+  %td
+    = link_to user_listing.name, user_listing
+    - if user_listing.admin?
+      %span.glyphicon.glyphicon-star
+  %td
+    = user_listing.email
+  %td
+    = link_to 'Approve', approve_user_path(user_listing), method: :post, class: 'btn btn-default' unless user_listing.approved?
+    = link_to 'Unapprove', unapprove_user_path(user_listing), method: :post, class: 'btn btn-default' if user_listing.approved?
+    = link_to 'Edit', edit_user_path(user_listing), class: 'btn btn-default'
+    = link_to 'Delete', user_listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
