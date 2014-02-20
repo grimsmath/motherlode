@@ -55,7 +55,6 @@ gem 'pundit'
 
 # Use Twitter Bootstrap 3.x using SASS
 gem 'bootstrap-sass', '~> 3.0.3.0'
-
 gem 'fontawesome-rails', '~> 4.0.3.0'
 
 # Use R Bates Nested Form to allow for multiple models manipulated in single view
