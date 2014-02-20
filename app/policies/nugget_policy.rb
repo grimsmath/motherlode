@@ -1,4 +1,4 @@
-class UserPolicy < ApplicationPolicy
+class NuggetPolicy < ApplicationPolicy
   attr_reader :user
 
   def initialize(user, record)
@@ -6,6 +6,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
+    true
+  end
+
+  def edit?
     user.admin?
   end
 
@@ -14,11 +18,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin?
+    true
   end
 
   def show?
-    user.admin?
+    true
   end
 
   def destroy?
