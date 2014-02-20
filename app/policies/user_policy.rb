@@ -7,11 +7,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin?
+    @user.admin?
   end
 
   def create?
-    user.admin?
+    @user.admin?
   end
 
   def show?
@@ -19,10 +19,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || user == @record
+    @user.admin? || @user == @record
   end
 
   def destroy?
-    user.admin?
+    @user.admin?
   end
 end
