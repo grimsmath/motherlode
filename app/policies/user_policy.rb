@@ -33,4 +33,16 @@ class UserPolicy < ApplicationPolicy
   def unapprove?
     @user.admin?
   end
+
+  def make_admin?
+    @user.admin?
+  end
+
+  def strip_admin?
+    @user.admin?
+  end
+
+  def update_password?
+    @user.admin? || @user == @record
+  end
 end

@@ -72,10 +72,9 @@ class UsersController < ApplicationController
   end
 
   def approve
-    authorize User
-    @user = User.find(params[:id])
-    @user.approved = true
-    @user.save
+    set_user
+    authorize @user
+    @user.update_attribute :approved, true
 
     respond_to do |format|
       format.html { redirect_to users_url }
@@ -83,13 +82,40 @@ class UsersController < ApplicationController
   end
 
   def unapprove
-    authorize User
-    @user = User.find(params[:id])
-    @user.approved = false
-    @user.save
+    set_user
+    authorize @user
+    @user.update_attribute :approved, false
+    redirect_to users_url
+  end
 
-    respond_to do |format|
-      format.html { redirect_to users_url }
+  def make_admin
+    set_user
+    authorize @user
+    @user.update_attribute :admin, true
+    redirect_to users_url
+  end
+
+  def strip_admin
+    set_user
+    authorize @user
+    @user.update_attribute :admin, false
+    redirect_to users_url
+  end
+
+  def update_password_form
+    set_user
+    authorize @user, :update_password?
+  end
+
+  def update_password
+    set_user
+    authorize @user, :update?
+    binding.remote_pry
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      flash[:failure] = 'Unable to change password'
+      redirect_to users_path
     end
   end
 
@@ -101,6 +127,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
