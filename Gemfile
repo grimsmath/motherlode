@@ -50,8 +50,8 @@ gem "mongoid-tree", :require => 'mongoid/tree'
 # Use devise for authentication
 gem "devise"
 
-# Use cancan for authorization
-gem "cancan"
+# Use pundit for authorization
+gem "pundit"
 
 # Use Twitter Bootstrap 3.x using SASS
 # gem 'anjlab-bootstrap-rails', {require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'}
