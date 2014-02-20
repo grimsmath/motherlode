@@ -3,22 +3,23 @@ class UserPolicy < ApplicationPolicy
 
   def initialize(user, record)
     @user = user
-  end
-
-  def create?
-    user.admin?
-  end
-
-  def update?
-    user.admin?
+    @record = record
   end
 
   def index?
     user.admin?
   end
 
-  def show?
+  def create?
     user.admin?
+  end
+
+  def show?
+    true
+  end
+
+  def update?
+    user.admin? || user == @record
   end
 
   def destroy?
