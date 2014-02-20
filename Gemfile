@@ -42,22 +42,21 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger', group: [:development, :test]
 
 # Use mongoid odm
-gem "mongoid", github: 'mongoid/mongoid'
+gem 'mongoid', github: 'mongoid/mongoid'
 
 # Use for tree like structure in categories
-gem "mongoid-tree", :require => 'mongoid/tree'
+gem 'mongoid-tree', :require => 'mongoid/tree'
 
 # Use devise for authentication
-gem "devise"
+gem 'devise'
 
 # Use pundit for authorization
-gem "pundit"
+gem 'pundit'
 
 # Use Twitter Bootstrap 3.x using SASS
-# gem 'anjlab-bootstrap-rails', {require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'}
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
-gem "fontawesome-rails", "~> 4.0.3.0"
+gem 'fontawesome-rails', '~> 4.0.3.0'
 
 # Use R Bates Nested Form to allow for multiple models manipulated in single view
 gem 'nested_form'
