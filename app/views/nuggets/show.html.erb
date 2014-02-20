@@ -6,7 +6,16 @@
     </div>
 
     <div class="panel-body">
-      <%= @nugget.title %>
+      <% @nugget.contents.each do |content| %>
+      <h5><%= content.name %></h5>
+      <%= content.content %>
+      <% end %>
+
+      <% @nugget.images.each do |content| %>
+          <h5><%= content.title %></h5>
+          <h6><%= content.caption %></h6>
+          <img src="/images/<%= content._id %>" />
+      <% end %>
     </div>
 
     <div class="panel-footer">
