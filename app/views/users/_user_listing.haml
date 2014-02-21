@@ -1,14 +1,7 @@
 %tr
   %td
-    = link_to user_listing.name || user_listing.email, user_listing
     - if user_listing.admin?
       %span.glyphicon.glyphicon-star
+    = link_to user_listing.name || user_listing.email, edit_user_path(user_listing)
   %td
-    = user_listing.email
-  %td
-    = link_to 'Change Password', update_password_form_user_path(user_listing), class: 'btn btn-default'
-    = link_to 'Approve', approve_user_path(user_listing), method: :post, class: 'btn btn-default' unless user_listing.approved?
-    = link_to 'Unapprove', unapprove_user_path(user_listing), method: :post, class: 'btn btn-default' if user_listing.approved?
-    = link_to 'Create Admin', make_admin_user_path(user_listing), method: :post, class: 'btn btn-default' if !user_listing.admin? && user_listing.approved?
-    = link_to 'Strip Admin', strip_admin_user_path(user_listing), method: :post, class: 'btn btn-default' if user_listing.admin? && user_listing != current_user
-
+    = mail_to user_listing.email
