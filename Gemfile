@@ -63,3 +63,7 @@ gem 'nested_form'
 # Use pry for breakpoint debugging, pry-remote for use with pow
 gem 'pry'
 gem 'pry-remote'
+
+# MLW hates erb, haml allows for more concise templates
+gem 'haml'
+#gem 'haml-rails' # For generators.

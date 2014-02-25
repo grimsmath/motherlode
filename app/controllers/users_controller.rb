@@ -71,6 +71,54 @@ class UsersController < ApplicationController
     end
   end
 
+  def approve
+    set_user
+    authorize @user
+    @user.update_attribute :approved, true
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+    end
+  end
+
+  def unapprove
+    set_user
+    authorize @user
+    @user.update_attribute :approved, false
+    redirect_to users_url
+  end
+
+  def make_admin
+    set_user
+    authorize @user
+    @user.update_attribute :admin, true
+    redirect_to users_url
+  end
+
+  def strip_admin
+    set_user
+    authorize @user
+    @user.update_attribute :admin, false
+    redirect_to users_url
+  end
+
+  def update_password_form
+    set_user
+    authorize @user, :update_password?
+  end
+
+  def update_password
+    set_user
+    authorize @user, :update?
+    binding.remote_pry
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      flash[:failure] = 'Unable to change password'
+      redirect_to users_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -79,6 +127,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+      end
     end
 end

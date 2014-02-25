@@ -1,0 +1,26 @@
+.container
+  .panel.panel-primary
+    .panel-heading
+      %h4
+        Manage Users
+    .panel-body
+      %table.table.table-striped.table-condensed
+        = render partial: 'table_heading'
+        %tbody{style: 'border-bottom: thick orange solid'}
+          = render partial: 'user_listing', collection: @users.awaiting_approval
+        %tbody
+          = render partial: 'user_listing', collection: @users.authors_with_admins_first
+    .panel-footer
+      = link_to 'New User', new_user_path, class: 'btn btn-primary'
+
+#passwordModal.modal.fade{tabindex: -1, role: 'dialog', 'aria-labelledy' => 'passwordModalLabel', 'aria-hidden' => true}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => true} &times;
+        %h4#passwordModalLabel.modal-title Change Password
+      .modal-body
+
+      .modal-footer
+        %button.btn.btn-default{type: 'button', 'data-default' => 'modal', 'data-dismiss' => 'modal'} Close
+        %button.btn.btn-primary{type: 'button', 'data-primary' => 'modal'} Update

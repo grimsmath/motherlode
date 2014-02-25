@@ -1,0 +1,45 @@
+.container
+  .panel.panel-primary
+    .panel-heading
+      %h4 Edit User #{@user.name}
+    = form_for(@user, html: {class: 'form-horizontal', role: 'form'}) do |f|
+      .panel-body
+        - if current_user.admin?
+          - if @user.approved?
+            = link_to 'Unapprove', unapprove_user_path(@user), method: :post, class: 'btn btn-default' unless @user == current_user
+            = link_to 'Make Admin', make_admin_user_path(@user), method: :post, class: 'btn btn-default' unless @user.admin?
+            = link_to 'Demote Admin', strip_admin_user_path(@user), method: :post, class: 'btn btn-default' if @user.admin? && @user != current_user
+          - else
+            .well
+              %p
+                User is awaiting approval and cannot post more than 5 nuggets.
+                = link_to 'Approve', approve_user_path(@user), method: :post
+          %p &nbsp;
+        - if @user.errors.any?
+          #error_explanation.alert.alert-danger
+            %h2 #{pluralize @user.errors.count, 'error'} prohibited this user from being saved:
+            %ul
+              - @user.errors.full_messages.each do |msg|
+                %li= msg
+        .form-group
+          = f.label :name, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :email, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_field :email, class: 'form-control'
+        .form-group
+          = f.label :biography, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_area :biography, class: 'form-control'
+        .form-group
+          = f.label :password, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.password_field :password, class: 'form-control'
+          = f.label 'Confirm', class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.password_field :password_confirmation, class: 'form-control'
+      .panel-footer
+        = f.submit 'Save User', class: 'btn btn-default'
+        = link_to 'Back', users_path, class: 'btn btn-default'
