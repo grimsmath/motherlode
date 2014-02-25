@@ -1,14 +1,22 @@
-.btn-group
-  %a.btn.btn-default{href: edit_user_path(user)}
-    %i.glyphicon.glyphicon-edit
-    Edit
+%span.dropdown
   %button.btn.btn-default.dropdown-toggle{'data-toggle'=> 'dropdown', 'data-target' => '#', 'href' => '#'}
+    Manage
     %span.caret
     %span.sr-only Toggle Dropdown
   %nav.dropdown-menu
-    %li= link_to 'Assign Moderation'
-    %li= link_to 'Make Admin'
-    %li= link_to 'Demote Admin'
+    -if user.approved?
+      %li= link_to raw('<i class="glyphicon glyphicon-list"></i> Assign Categories'), manage_categories_user_path(user)
+    -else
+      %li= link_to raw('<i class="glyphicon glyphicon-thumbs-up"></i> Approve'), approve_user_path(user), method: :post
+    -unless current_page? edit_user_path(user)
+      %li= link_to raw('<i class="glyphicon glyphicon-edit"></i> Edit Details'), edit_user_path(user)
     %li.divider
-    %li= link_to 'Lock'
-    %li= link_to 'Delete'
+    -if user.admin?
+      %li= link_to raw('<i class="glyphicon glyphicon-remove-circle"></i> Demote Admin'), demote_admin_user_path(user), method: :post
+      %li.divider
+    -elsif user.approved?
+      %li= link_to raw('<i class="glyphicon glyphicon-ok-circle"></i> Make Admin'), promote_admin_user_path(user), method: :post
+      %li.divider
+    -if user.approved?
+      %li= link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unapprove'), unapprove_user_path(user), method: :post
+    %li= link_to raw('<i class="glyphicon glyphicon-ban-circle"></i> Disable Account'), disable_user_path(user), method: :post

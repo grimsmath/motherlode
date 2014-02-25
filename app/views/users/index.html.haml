@@ -9,18 +9,17 @@
     %thead
       %tr
         %th Name
-        %th
         %th Email
         %th Categories
-        %th Actions
+        %th.buttons
     %tbody
       - @users.each do |user|
         %tr.user
-          %th= link_to user.name || user.email, user_path(user)
-          %td
+          %th
+            = link_to user.name || user.email, user_path(user)
             -if user.admin?
               %label.btn-danger.btn-xs Admin
-            -if user.awaiting_approval?
+            -unless user.approved?
               %label.btn-primary.btn-xs Awaiting Approval
           %td= mail_to user.email
           %td

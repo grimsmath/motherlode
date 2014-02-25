@@ -2,10 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user {
-  border-bottom: solid 1px;
-}
-
-.user .controls {
-  text-align: right;
+thead th {
+  width: 33%;
+  .controls {
+    width: auto;
+  }
 }

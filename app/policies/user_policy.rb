@@ -34,15 +34,11 @@ class UserPolicy < ApplicationPolicy
     @user.admin?
   end
 
-  def make_admin?
+  def promote_admin?
     @user.admin?
   end
 
-  def strip_admin?
+  def demote_admin?
     @user.admin?
-  end
-
-  def update_password?
-    @user.admin? || @user == @record
   end
 end

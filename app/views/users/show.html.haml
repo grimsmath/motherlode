@@ -1,15 +1,13 @@
 .container
-  .panel.panel-primary
-    .panel-heading
-      %h4= @user.name
-    .panel-body
-      %p= mail_to @user.email
-      %p= @user.biography
+  %header
+    %h2
+      = @user.name || @user.email
+      = render partial: 'user_edit_menu', locals: {user: @user} if current_user.admin?
+  %aside
+    %p= mail_to @user.email
+    %p= @user.biography
 
-      %h4 Author of the following content...
-      %ul
-        - Nugget.where(user_id: @user.id).each do |nugget|
-          %li= link_to nugget.title, nugget_path
-    .panel-footer
-      =link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary'
-      =link_to 'Back', users_path, class: 'btn btn-primary'
+  %h3 Nuggets
+  %ul
+    - Nugget.where(user_id: @user.id).each do |nugget|
+      %li= link_to nugget.title, nugget_path

@@ -10,10 +10,10 @@ Motherlode::Application.routes.draw do
     member do
       post :approve
       post :unapprove
-      post :make_admin
-      post :strip_admin
-      get :update_password_form
-      patch :update_password
+      post :disable
+      post :promote_admin
+      post :demote_admin
+      get :manage_categories
     end
   end
 

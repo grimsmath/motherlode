@@ -88,35 +88,18 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def make_admin
+  def promote_admin
     set_user
     authorize @user
     @user.update_attribute :admin, true
     redirect_to users_url
   end
 
-  def strip_admin
+  def demote_admin
     set_user
     authorize @user
     @user.update_attribute :admin, false
     redirect_to users_url
-  end
-
-  def update_password_form
-    set_user
-    authorize @user, :update_password?
-  end
-
-  def update_password
-    set_user
-    authorize @user, :update?
-    binding.remote_pry
-    if @user.update(user_params)
-      redirect_to users_path
-    else
-      flash[:failure] = 'Unable to change password'
-      redirect_to users_path
-    end
   end
 
   private

@@ -43,24 +43,12 @@ class User
 
   field :nugget_count, type: Integer
 
-  field :admin, type: Boolean
   field :approved, type: Boolean
+  field :moderator, type: Boolean
+  field :admin, type: Boolean
 
-  scope :admins, ->{ where(admin: true) }
   scope :awaiting_approval, ->{ excludes(approved: true) }
-  scope :authors_with_admins_first, ->{ order_by(admin: -1).where(approved: true, ) }
-
-  def moderator?
-    true
-  end
-
-  def status
-    return -1 unless approved
-    return 2 if admin
-    return 1
-  end
-
-  def awaiting_approval?
-    true if status == -1
-  end
+  scope :approved, ->{ excludes(approved: true) }
+  scope :moderator, ->{ where(moderator: true)}
+  scope :admins, ->{ where(admin: true) }
 end
