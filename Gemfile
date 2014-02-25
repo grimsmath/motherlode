@@ -65,6 +65,6 @@ gem 'nested_form'
 gem 'pry'
 gem 'pry-remote'
 
-# MLW hates erb, haml allows for more concise templates
+# Use haml for more concise templates
 gem 'haml'
-#gem 'haml-rails' # For generators.
+gem 'haml-rails' # For generators.
