@@ -17,7 +17,6 @@
 
 # Ignort .env to protect credentials
 .env
-.powenv
 
 # Supress .idea folder
 .idea
