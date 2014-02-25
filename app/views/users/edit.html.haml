@@ -4,21 +4,11 @@
       %h4 Edit User #{@user.name}
     = form_for(@user, html: {class: 'form-horizontal', role: 'form'}) do |f|
       .panel-body
-        - if current_user.admin?
-          - if @user.approved?
-            = link_to 'Unapprove', unapprove_user_path(@user), method: :post, class: 'btn btn-default' unless @user == current_user
-            = link_to 'Make Admin', make_admin_user_path(@user), method: :post, class: 'btn btn-default' unless @user.admin?
-            = link_to 'Demote Admin', strip_admin_user_path(@user), method: :post, class: 'btn btn-default' if @user.admin? && @user != current_user
-          - else
-            .well
-              %p
-                User is awaiting approval and cannot post more than 5 nuggets.
-                = link_to 'Approve', approve_user_path(@user), method: :post
-          %p &nbsp;
+        %td= render partial: 'user_edit_menu', locals: {user: @user}
         - if @user.errors.any?
           #error_explanation.alert.alert-danger
             %h2 #{pluralize @user.errors.count, 'error'} prohibited this user from being saved:
-            %ul
+            %ul 
               - @user.errors.full_messages.each do |msg|
                 %li= msg
         .form-group

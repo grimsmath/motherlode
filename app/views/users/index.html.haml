@@ -1,14 +1,29 @@
 .container
-  .panel.panel-primary
-    .panel-heading
-      %h4
-        Manage Users
-    .panel-body
-      %table.table.table-striped.table-condensed
-        = render partial: 'table_heading'
-        %tbody{style: 'border-bottom: thick orange solid'}
-          = render partial: 'user_listing', collection: @users.awaiting_approval
-        %tbody
-          = render partial: 'user_listing', collection: @users.authors_with_admins_first
-    .panel-footer
-      = link_to 'New User', new_user_path, class: 'btn btn-primary'
+  %header
+    %h2
+      Manage Users
+      %span
+        = link_to 'New User', new_user_path, class: 'btn btn-primary'
+  %input.col-md-12#q{autocomplete: 'off', placeholder: 'Filter by...'}
+  %table.table.table-striped.table-condensed
+    %thead
+      %tr
+        %th Name
+        %th
+        %th Email
+        %th Categories
+        %th Actions
+    %tbody
+      - @users.each do |user|
+        %tr.user
+          %th= link_to user.name || user.email, user_path(user)
+          %td
+            -if user.admin?
+              %label.btn-danger.btn-xs Admin
+            -if user.awaiting_approval?
+              %label.btn-primary.btn-xs Awaiting Approval
+          %td= mail_to user.email
+          %td
+            %ul.list-unstyled
+              %li= link_to Category.first.title
+          %td= render partial: 'user_edit_menu', locals: {user: user}

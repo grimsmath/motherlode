@@ -50,7 +50,17 @@ class User
   scope :awaiting_approval, ->{ excludes(approved: true) }
   scope :authors_with_admins_first, ->{ order_by(admin: -1).where(approved: true, ) }
 
-  def moderator
+  def moderator?
     true
+  end
+
+  def status
+    return -1 unless approved
+    return 2 if admin
+    return 1
+  end
+
+  def awaiting_approval?
+    true if status == -1
   end
 end
