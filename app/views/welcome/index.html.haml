@@ -1,0 +1,25 @@
+- if current_user.nil?
+  .container
+    .row
+      .col-lg-12
+        .jumbotron
+          %h1.text-center Welcome to MotherlodeCMS
+          %p.text-center
+            Please feel free to view the content on this site; however, to add content
+            you must have an account. Getting an account is
+            = succeed "," do
+              %strong FREE
+          %p.text-center
+            = link_to "Signup Here", 'users/sign_up', class: 'btn btn-primary btn-lg'
+            = link_to "Sign In", 'users/sign_in', class: 'btn btn-default btn-lg'
+.container
+  .row
+    .col-lg-12
+      .list-group
+        %a.list-group-item.active{href: "#"}
+          %h4.list-group-item-heading Motherlode Projects
+          %p.list-group-item-text
+            From here you can drill down and find the category you would like to view, add nuggets, or manage.  If you have
+            any questions, please click on the "help" button above.
+        - @categories.where(parent_id: nil).each do |category|
+          = link_to category.title, category, class: "list-group-item"
