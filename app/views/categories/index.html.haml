@@ -2,13 +2,14 @@
   .panel.panel-success
     .panel-heading
       %h4 Available Categories
+
     .panel-body
       %table.table.table-striped.table-bordered
         %thead
           %tr
             %th Name
-            %th Parent Category
-            %th Child Category
+            %th Parent
+            %th Child
             %th Status
             %th Actions
         %tbody
@@ -28,12 +29,13 @@
                 = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
         %tfoot
           %tr
-            %th{colspan: "4"}
+            %th{colspan: "5"}
               - if @categories.count == 0
                 There are 0 categories in the system.  Click the "New Category" button to create one!
               - elsif @categories.count == 1
                 There is 1 category in the system.
               - else
                 There are #{@categories.count} categories in the system
+
     .panel-footer
       = link_to 'New Category', new_category_path, class: "btn btn-primary"

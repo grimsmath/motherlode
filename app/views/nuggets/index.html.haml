@@ -2,6 +2,7 @@
   .panel.panel-success
     .panel-heading
       %h4 Listing nuggets
+
     .panel-body
       %table.table.table-striped.table-bordered
         %thead
@@ -35,5 +36,6 @@
                 There is 1 nugget in the system.
               - else
                 There are #{@nuggets.count} nuggets in the system
+
     .panel-footer
       = link_to 'New Nugget', new_nugget_path, class: "btn btn-primary"
