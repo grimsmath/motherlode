@@ -1,0 +1,26 @@
+= nested_form_for(@nugget, html: { :role => "form" }) do |f|
+  - if @nugget.errors.any?
+    #error_explanation.alert.alert-danger
+      %h2 #{pluralize @user.errors.count, 'error'} prohibited this user from being saved:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+        %li= msg
+
+  .col-lg-12
+    .form-group
+      = f.label :title, "Nugget Title"
+      = f.text_field :title, class: "form-control"
+
+    .form-group
+      = f.label :category_id, "Nugget Category"
+      = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: '' }
+
+    .form-group
+      = f.label :user_id, "Author"
+      = f.collection_select :user_id, User.all, :id, :email
+
+    = f.fields_for :contents
+    = f.fields_for :images
+
+  = f.link_to_add "Add Content", :contents, class: "btn btn-default"
+  = f.link_to_add "Add Image", :images, class: "btn btn-default"

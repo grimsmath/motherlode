@@ -1,0 +1,9 @@
+.container
+  .row
+    .col-md-12
+      %ol.breadcrumb
+        %li= link_to 'Home', welcome_index_path
+        - @category.ancestors.each do |category|
+          %li= link_to category.title, category
+        %li.current
+          = link_to @category.title, @category

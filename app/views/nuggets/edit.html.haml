@@ -1,0 +1,18 @@
+.container
+  .panel.panel-primary
+    .panel-heading
+      h4 Edit Nugget
+
+    .panel-body
+      = render 'form'
+
+    .panel-footer
+      %button.btn.btn-primary{type: "submit"} Save Nugget
+      = link_to 'Back', nuggets_path, class: "btn btn-default"
+
+:javascript
+  $(function() {
+    $('button[type="submit"]').click(function() {
+      $('form').submit();
+    })
+  })

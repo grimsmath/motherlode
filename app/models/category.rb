@@ -9,6 +9,6 @@ class Category
   field :active, type: Boolean
 
   def indented_title
-    '..' * ancestors.count + title
+    '---' * ancestors.count + ' ' + title
   end
 end

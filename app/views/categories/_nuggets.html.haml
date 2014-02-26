@@ -1,0 +1,4 @@
+.list-group
+  %a.list-group-item.active{href: "#"} Nuggets
+  - @category.nuggets.each do |nugget|
+    = link_to nugget.title, nugget, class: 'list-group-item'

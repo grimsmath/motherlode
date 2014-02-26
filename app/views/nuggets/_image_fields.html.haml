@@ -1,0 +1,8 @@
+.form-group
+  = f.label :title, 'Image Title'
+  = f.text_field :title, class: 'form-control'
+
+.form-group
+  = f.label :caption, 'Image Caption'
+  = f.text_area :caption, class: 'form-control'
+  = f.file_field :content_for
