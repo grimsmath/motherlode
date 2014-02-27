@@ -1,5 +1,16 @@
 .container
-  .row
-    = render "crumbs"
-    .col-md-12
-      = render 'categories/details'
+  = render "crumbs"
+  %h2
+    = @category.title
+    = render partial: 'category_edit_menu', locals: {category: @category} if current_user.admin?
+  %p= @category.description
+  - @category.children.each do |category|
+    %article.category
+      %header= link_to category.title, category
+      %p= category.description
+  - @category.nuggets.each do |nugget|
+    %article.nugget
+      %header= link_to nugget.title, nugget
+      = link_to 'Edit'
+      |
+      = link_to 'Read more', nugget
