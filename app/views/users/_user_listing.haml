@@ -1,7 +1,0 @@
-%tr
-  %td
-    - if user_listing.admin?
-      %span.glyphicon.glyphicon-star
-    = link_to user_listing.name || user_listing.email, edit_user_path(user_listing)
-  %td
-    = mail_to user_listing.email
