@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Motherlode CMS
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    :css
+      body {
+        padding-top: 70px;
+      }
+  %body{role: "document"}
+    = render "partials/sitenav"
+    = render "partials/sitealert"
+    = yield

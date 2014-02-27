@@ -1,0 +1,18 @@
+.container.down-20px
+  .col-md-12
+    .panel.panel-primary
+      .panel-heading
+        %h4 New Category
+      .panel-body
+        = render 'form'
+      .panel-footer
+        %button.btn.btn-primary{type: "submit"} Save Category
+        = link_to 'Back', categories_path, class: "btn btn-default"
+
+:javascript
+  $(function() {
+    $('button[type="submit"]').click(function() {
+      console.log("Category new submit called...");
+      $('form').submit();
+    })
+  })

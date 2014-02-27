@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    %h4= @category.title
+  .panel-body
+    .row
+      .col-lg-8
+        = render "categories/nuggets"
+      .col-lg-4
+        = render "categories/children"
+  .panel-footer
+    - unless current_user.nil?
+      = link_to 'Add Nugget', new_nugget_path, class: "btn btn-primary"
+    = link_to 'Back', :back, class: "btn btn-default"

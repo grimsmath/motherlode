@@ -1,0 +1,20 @@
+.container
+  %p#notice= notice
+  .panel.panel-default
+    .panel-heading
+      %h4= @nugget.title
+
+    .panel-body
+      - @nugget.contents.each do |content|
+        %h5= content.name
+        = content.content
+
+      - @nugget.images.each do |content|
+        %h5= content.title
+        %h6= content.caption
+        %img{src: "/images/#{content._id}"}/
+    .panel-footer
+
+      - unless current_user.nil?
+        = link_to 'Edit Nugget', edit_nugget_path(@nugget), class: 'btn btn-primary'
+      = link_to 'Back', @nugget.category, class: 'btn btn-default'
