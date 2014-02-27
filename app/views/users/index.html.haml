@@ -18,9 +18,9 @@
           %th
             = link_to user.name || user.email, user_path(user)
             -if user.admin?
-              %label.btn-danger.btn-xs Admin
+              %label.label.label-danger Admin
             -unless user.approved?
-              %label.btn-primary.btn-xs Awaiting Approval
+              %label.label.label-primary Awaiting Approval
           %td= mail_to user.email
           %td
             %ul.list-unstyled
