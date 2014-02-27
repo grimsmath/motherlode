@@ -1,8 +1,7 @@
 .container
   %header
     %h2
-      Nuggets Awaiting Moderation
-  %input.col-md-12#q{autocomplete: 'off', placeholder: 'Filter by...'}
+      Unpublished Nuggets
   %table.table.table-striped.table-condensed
     %thead
       %tr
@@ -16,4 +15,4 @@
           %th= link_to nugget.title, nugget
           %td= link_to nugget.category.title, nugget.category
           %td= link_to nugget.user.name || nugget.user.email, nugget.user
-          -#%td= render partial: 'user_edit_menu', locals: {user: user}
+          %td= render partial: 'nugget_edit_menu', locals: {nugget: nugget}

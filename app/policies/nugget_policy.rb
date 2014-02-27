@@ -32,4 +32,12 @@ class NuggetPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def publish?
+    true
+  end
+
+  def unpublish?
+    true
+  end
 end

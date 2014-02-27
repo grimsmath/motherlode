@@ -1,0 +1,10 @@
+%span.dropdown
+  %button.btn.btn-default.dropdown-toggle{'data-toggle'=> 'dropdown', 'data-target' => '#', 'href' => '#'}
+    Manage
+    %span.caret
+    %span.sr-only Toggle Dropdown
+  %nav.dropdown-menu
+    -if nugget.published?
+      %li= link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unpublish'), unpublish_nugget_path(nugget), method: :post
+    -else
+      %li= link_to raw('<i class="glyphicon glyphicon-thumbs-up"></i> Publish'), publish_nugget_path(nugget), method: :post

@@ -8,5 +8,6 @@ class Nugget
   accepts_nested_attributes_for :images, :allow_destroy => true
 
   field :title, type: String
+  field :published, type: Boolean
   # All nugget content is stored in an array of embedded documents which are persisted Content entities.
 end

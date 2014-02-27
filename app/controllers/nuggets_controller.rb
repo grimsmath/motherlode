@@ -5,7 +5,7 @@ class NuggetsController < ApplicationController
   # GET /nuggets
   # GET /nuggets.json
   def index
-    @nuggets = Nugget.all
+    @nuggets = Nugget.excludes(published: true).all
   end
 
   # GET /nuggets/1
@@ -60,6 +60,20 @@ class NuggetsController < ApplicationController
       format.html { redirect_to nuggets_url }
       format.json { head :no_content }
     end
+  end
+
+  def publish
+    set_nugget
+    @nugget.published = true
+    @nugget.save
+    redirect_to nuggets_url
+  end
+
+  def unpublish
+    set_nugget
+    @nugget.published = false
+    @nugget.save
+    redirect_to nuggets_url
   end
 
   private
