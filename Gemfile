@@ -60,6 +60,7 @@ gem 'fontawesome-rails', '~> 4.0.3.0'
 
 # Use R Bates Nested Form to allow for multiple models manipulated in single view
 gem 'nested_form'
+gem 'simple_form'
 
 # Use pry for breakpoint debugging, pry-remote for use with pow
 gem 'pry'

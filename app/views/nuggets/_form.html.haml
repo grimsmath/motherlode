@@ -1,26 +1,48 @@
 = nested_form_for(@nugget, html: { :role => "form" }) do |f|
   - if @nugget.errors.any?
     #error_explanation.alert.alert-danger
-      %h2 #{pluralize @user.errors.count, 'error'} prohibited this user from being saved:
+      %h2
+        = pluralize(@nugget.errors.count, "error")
+        prohibited this nugget from being saved:
       %ul
-        - @user.errors.full_messages.each do |msg|
-        %li= msg
+        - @nugget.errors.full_messages.each do |msg|
+          %li= msg
 
-  .col-lg-12
-    .form-group
-      = f.label :title, "Nugget Title"
-      = f.text_field :title, class: "form-control"
+  .form-group
+    = f.label :title, "Nugget Title"
+    = f.text_field :title, class: "form-control"
 
-    .form-group
-      = f.label :category_id, "Nugget Category"
-      = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: '' }
+  .form-group
+    = f.label :category_id, "Nugget Category"
+    = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: '' }, class: "form-control"
 
-    .form-group
-      = f.label :user_id, "Author"
-      = f.collection_select :user_id, User.all, :id, :email
+  .form-group
+    = f.label :user_id, "Author"
+    = f.collection_select :user_id, User.all, :id, :email, {include_blank: '' }, class: "form-control"
 
-    = f.fields_for :contents
-    = f.fields_for :images
+  .col-lg-8
+    = f.link_to_add "Add Content", :contents, class: "btn btn-default"
+    = f.fields_for :contents do |contents_form|
+      .well
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+        .form-group
+          = f.label :name, "Content Title"
+          = contents_form.text_field :name, class: "form-control"
 
-  = f.link_to_add "Add Content", :contents, class: "btn btn-default"
-  = f.link_to_add "Add Image", :images, class: "btn btn-default"
+        .form-group
+          = f.label :content, "Content Body"
+          = contents_form.text_area :content, class: "form-control"
+
+  .col-lg-4
+    = f.link_to_add "Add Image", :images, class: "btn btn-default"
+    = f.fields_for :images do |images_form|
+      .well
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+        .form-group
+          = f.label :title, 'Image Title'
+          = images_form.text_field :title, class: "form-control"
+
+        .form-group
+          = f.label :caption, "Image Caption"
+          = images_form.text_area :caption, class: "form-control"
+          = images_form.file_field :content
