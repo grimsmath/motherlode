@@ -36,7 +36,7 @@
       = f.fields_for :images do |images_form|
         .well
           .col-lg-2
-            %img{src: "/images/#{images_form.content.id}", width: '100px', height: '100px'}
+            %img{src: "/images/#{images_form.object.id}", width: '100px', height: '100px'}
 
           .col-lg-10
             .form-group
