@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
 
   has_many :nuggets
+  has_and_belongs_to_many :categories
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -50,4 +51,8 @@ class User
   scope :approved, ->{ excludes(approved: true) }
   scope :moderator, ->{ where(moderator: true)}
   scope :admins, ->{ where(admin: true) }
+
+  def may_moderate
+    Category.where(:moderators.in => self)
+  end
 end

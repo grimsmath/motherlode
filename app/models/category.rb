@@ -3,6 +3,7 @@ class Category
   include Mongoid::Tree
 
   has_many :nuggets
+  has_and_belongs_to_many :moderators, class_name: 'User'
 
   field :title, type: String
   field :description, type: String
