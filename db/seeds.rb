@@ -14,6 +14,8 @@ User.destroy_all()
 # =============================================
 User.create(email: 'david.king@unf.edu', name: 'David King', password: 'password', admin: true)
 User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark', password: 'password', admin: true)
+User.create(email: 'm@mlw.ac', name: 'Matt Walston', password: 'password', admin: true)
+User.create(email: 'nikideroin@gmail.com', name: 'Nicole DeRoin', password: 'password', admin: true)
 
 # remove all the old categories from the database
 Category.destroy_all()
@@ -22,7 +24,6 @@ Category.destroy_all()
 # First Coast Green Map
 # =============================================
 fcgm = Category.create(title: 'First Coast Green Map')
-
 fcgm.children << Category.create(title: 'Green Buildings')
 fcgm.children << Category.create(title: 'Community Gardens')
 fcgm.children << Category.create(title: 'Murray Hill Community Garden')
