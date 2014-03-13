@@ -6,7 +6,8 @@
       = render 'form'
     .panel-footer
       %button.btn.btn-primary{type: "submit"} Save Category
-      = link_to 'Back', categories_path, class: 'btn btn-default'
+      = link_to 'Back', :back, class: 'btn btn-default'
+      = link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
 
 :javascript
   $(function() {
