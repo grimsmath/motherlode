@@ -1,41 +1,28 @@
 .container
-  .panel.panel-success
-    .panel-heading
-      %h4 Listing nuggets
-
-    .panel-body
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
-            %th Title
-            %th Category
-            %th Author
-            %th Status
-            %th Actions
-        %tbody
-          - @nuggets.each do |nugget|
-            %tr
-              %td
-                %h5= link_to nugget.title, nugget
-              %td
-                %h5= link_to nugget.category.title, nugget.category unless nugget.category.nil?
-              %td
-                %h5  
-              %td
-                %h5  
-              %td.action_column
-                = link_to 'Show', nugget, class: "btn btn-default"
-                = link_to 'Edit', edit_nugget_path(nugget), class: "btn btn-default"
-                = link_to 'Destroy', nugget, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
-        %tfoot
-          %tr
-            %th{colspan: "5"}
-              - if @nuggets.count == 0
-                There are no nuggets in the system. Click the "New Nugget" button to add one!
-              - elsif @nuggets.count == 1
-                There is 1 nugget in the system.
-              - else
-                There are #{@nuggets.count} nuggets in the system
-
-    .panel-footer
-      = link_to 'New Nugget', new_nugget_path, class: "btn btn-primary"
+  %header
+    %h2
+      Manage Nuggets
+      %span
+        = link_to 'New Nugget', new_nugget_path, class: 'btn btn-primary'
+  %input.col-md-12#q{autocomplete: 'off', placeholder: 'Filter by...'}
+  %table.table.table-striped.table-condensed
+    %thead
+      %tr
+        %th Title
+        %th Category
+        %th Author
+        %th Status
+        %th.buttons
+    %tbody
+      - @nuggets.each do |nugget|
+        %tr.nugget
+          %th
+            = link_to nugget.title, nugget_path(nugget)
+          %td
+            %ul.list-unstyled
+              %li= link_to Category.first.title
+          %td
+            = nugget.user.name
+          %td
+            nugget.status.here
+          %td= render partial: 'nugget_edit_menu', locals: {nugget: nugget}
