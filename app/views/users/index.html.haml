@@ -16,7 +16,7 @@
       - @users.each do |user|
         %tr.user
           %th
-            = link_to user.name || user.email, user_path(user)
+            = link_to user.name, user
             -if user.admin?
               %label.btn-danger.btn-xs Admin
             -unless user.approved?
