@@ -20,11 +20,10 @@
     = f.label :user_id, "Author"
     = f.collection_select :user_id, User.all, :id, :email, {include_blank: '' }, class: "form-control"
 
-  .col-lg-8
-    = f.link_to_add "Add Content", :contents, class: "btn btn-default"
-    = f.fields_for :contents do |contents_form|
-      .well
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+  .row
+    .col-lg-12
+      = f.link_to_add "Add Content", :contents, class: "btn btn-default"
+      = f.fields_for :contents do |contents_form|
         .form-group
           = f.label :name, "Content Title"
           = contents_form.text_field :name, class: "form-control"
@@ -33,11 +32,10 @@
           = f.label :content, "Content Body"
           = contents_form.text_area :content, class: "form-control"
 
-  .col-lg-4
-    = f.link_to_add "Add Image", :images, class: "btn btn-default"
-    = f.fields_for :images do |images_form|
-      .well
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+  .row
+    .col-lg-12
+      = f.link_to_add "Add Image", :images, class: "btn btn-default"
+      = f.fields_for :images do |images_form|
         .form-group
           = f.label :title, 'Image Title'
           = images_form.text_field :title, class: "form-control"

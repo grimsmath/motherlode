@@ -12,7 +12,7 @@
       - @nugget.images.each do |content|
         %h5= content.title
         %h6= content.caption
-        %img{src: "/images/#{content._id}"}/
+        %img{src: "/images/#{content._id}", width: "400px" }/
     .panel-footer
 
       - unless current_user.nil?
