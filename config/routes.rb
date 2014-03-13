@@ -1,6 +1,6 @@
 Motherlode::Application.routes.draw do
   get "images/show"
-  get "welcome/index2"
+  get "welcome/index"
   resources :categories
   resources :nuggets
   resources :images
