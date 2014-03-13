@@ -11,4 +11,14 @@ class Category
   def indented_title
     '--' * ancestors.count + ' ' + title
   end
+
+  def descendants_and_self_nuggets
+    Nugget.where(:category.in => descendants_and_self.to_a)
+    # TODO: Performance test above vs:
+    #arr = []
+    #descendants_and_self.each do |category|
+    #  arr << category.nuggets
+    #end
+    #arr
+  end
 end
