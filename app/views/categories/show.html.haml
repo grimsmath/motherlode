@@ -5,4 +5,12 @@
       = @category.title
       %span
         = render partial: 'category_edit_menu', locals: {category: @category}
-        = render 'categories/details'
+    %p= @category.description
+  %h3 Subcategories
+  %ol
+    - @category.children.each do |child_category|
+      %li= link_to child_category.title, child_category
+  %h3 Nuggets
+  %ol
+    - @category.nuggets.each do |nugget|
+      %li= link_to nugget.title, nugget

@@ -1,10 +1,10 @@
 Motherlode::Application.routes.draw do
   get "images/show"
-  resources :categories
   resources :nuggets
   resources :images
 
   devise_for :users
+
   resources :users do
     member do
       post :approve
@@ -13,6 +13,12 @@ Motherlode::Application.routes.draw do
       post :promote_admin
       post :demote_admin
       get :manage_categories
+    end
+  end
+
+  resources :categories do
+    member do
+      get :new_subcategory
     end
   end
 

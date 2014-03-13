@@ -32,4 +32,8 @@ class CategoryPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def new_subcategory?
+    new?
+  end
 end

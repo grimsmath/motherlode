@@ -18,6 +18,12 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def new_subcategory
+    @category = Category.new
+    @category.parent = Category.find(params[:id])
+    render :new
+  end
+
   # GET /categories/1/edit
   def edit
   end
