@@ -8,29 +8,35 @@
         - @nugget.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
-    = f.label :title, "Nugget Title"
-    = f.text_field :title, class: "form-control"
+  .row
+    .col-lg-12
+      .form-group
+        = f.text_field :title, class: "form-control", placeholder: "Nugget Title"
 
-  .form-group
-    = f.label :category_id, "Nugget Category"
-    = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: ''}, class: "form-control"
+  .row
+    .col-lg-6
+      .form-group
+        = f.label :category_id, "Nugget Category"
+        = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: ''}, class: "form-control"
 
-  .form-group
-    = f.label :user_id, "Author"
-    = f.collection_select :user_id, User.all, :id, :email, {include_blank: ''}, class: "form-control"
+    .col-lg-6
+      .form-group
+        = f.label :user_id, "Author"
+        = f.collection_select :user_id, User.all, :id, :email, {include_blank: ''}, class: "form-control"
 
   .row
     .col-lg-12
       = f.link_to_add "Add Content", :contents, class: "btn btn-default"
       = f.fields_for :contents do |contents_form|
-        .form-group
-          = f.label :name, "Content Title"
-          = contents_form.text_field :name, class: "form-control"
+        .row
+          .col-lg-12
+            .form-group
+              = f.label :name, "Content Title"
+              = contents_form.text_field :name, class: "form-control"
 
-        .form-group
-          = f.label :content, "Content Body"
-          = contents_form.text_area :content, class: "form-control"
+            .form-group
+              = f.label :content, "Content Body"
+              = contents_form.text_area :content, class: "form-control"
 
   .row
     .col-lg-12

@@ -19,10 +19,12 @@
           %th
             = link_to nugget.title, nugget_path(nugget)
           %td
-            %ul.list-unstyled
-              %li= link_to Category.first.title
+            = link_to nugget.category.title, category_path(nugget.category)
           %td
-            = nugget.user.name
+            = link_to nugget.user.name, user_path(nugget.user)
           %td
-            nugget status
+            - if nugget.approved?
+              = 'Approved'
+            - else
+              = 'Not Approved'
           %td= render partial: 'nugget_edit_menu', locals: {nugget: nugget}
