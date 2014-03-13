@@ -5,7 +5,7 @@
     %span.sr-only Toggle Dropdown
   %nav.dropdown-menu
     %li= link_to raw('<i class="glyphicon glyphicon-edit"></i> Edit Category'), edit_category_path(category)
-    %li{style: 'background:orange'}= link_to 'Add Subcategory'
+    %li= link_to raw('<i class="glyphicon glyphicon-plus"></i> Add Category'), subcategory_new_category_path(category)
     %li{style: 'background:orange'}= link_to 'Assign Moderators'
     %li.divider
     %li{style: 'background:orange'}= link_to 'Moderate Nuggets'

@@ -16,12 +16,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-  end
-
-  def new_subcategory
-    @category = Category.new
-    @category.parent = Category.find(params[:id])
-    render :new
+    @category.parent = Category.find(params[:id]) unless params[:id].nil?
   end
 
   # GET /categories/1/edit
@@ -32,6 +27,11 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+    binding.remote_pry
+    #if params[:category_id]
+    #  @parent = Category.find(params[:category_id]).first
+    #  @category.parent = @parent unless @parent.nil?
+    #end
 
     respond_to do |format|
       if @category.save

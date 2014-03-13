@@ -18,6 +18,6 @@
       = f.label :description, class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_area :description, class: 'form-control'
-
+    = f.hidden_field :parent_id, value: params[:id]
     = f.submit 'Save Category', class: 'btn btn-default'
     = link_to 'Back', :back, class: 'btn btn-default'
