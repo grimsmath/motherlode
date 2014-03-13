@@ -5,14 +5,13 @@
       %h4= @nugget.title
 
     .panel-body
-      - @nugget.contents.each do |content|
-        %h5= content.name
-        = content.content
+      = @nugget.content
 
       - @nugget.images.each do |content|
         %h5= content.title
         %h6= content.caption
-        %img{src: "/images/#{content._id}", width: "400px" }/
+        %img{src: "/images/#{content._id}", width: "400px" }
+
     .panel-footer
       - unless current_user.nil?
         = link_to 'Edit Nugget', edit_nugget_path(@nugget), class: 'btn btn-primary'

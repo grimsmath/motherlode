@@ -26,17 +26,9 @@
 
   .row
     .col-lg-12
-      = f.link_to_add "Add Content", :contents, class: "btn btn-default"
-      = f.fields_for :contents do |contents_form|
-        .row
-          .col-lg-12
-            .form-group
-              = f.label :name, "Content Title"
-              = contents_form.text_field :name, class: "form-control"
-
-            .form-group
-              = f.label :content, "Content Body"
-              = contents_form.text_area :content, class: "form-control"
+      .form-group
+        = f.label :content, "Content Body"
+        = f.text_area :content, class: "form-control"
 
   .row
     .col-lg-12
