@@ -1,5 +1,8 @@
 .container
-  .row
-    = render "crumbs"
-    .col-md-12
-      = render 'categories/details'
+  = render "crumbs"
+  %header
+    %h2
+      = @category.title
+      %span
+        = render partial: 'category_edit_menu', locals: {category: @category}
+        = render 'categories/details'
