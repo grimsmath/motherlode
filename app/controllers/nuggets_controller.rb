@@ -16,6 +16,8 @@ class NuggetsController < ApplicationController
   # GET /nuggets/new
   def new
     @nugget = Nugget.new
+    @nugget.category = params[:category_id]
+    @nugget.user = current_user
   end
 
   # GET /nuggets/1/edit

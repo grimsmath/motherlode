@@ -17,6 +17,8 @@ Motherlode::Application.routes.draw do
   end
 
   resources :categories do
+    resources :nuggets
+
     member do
       get 'subcategory/new' => 'categories#new'
     end
