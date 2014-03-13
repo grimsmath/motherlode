@@ -12,5 +12,13 @@
       %li= link_to child_category.title, child_category
   %h3 Nuggets
   %ol
+    - @category.nuggets.each do |nugget|
+      %li= link_to nugget.title, nugget
+  %h3 Subcat Nuggets
+  %ol
+    - @category.descendants_nuggets.each do |nugget|
+      %li= link_to nugget.title, nugget
+  %h3 All Nuggets
+  %ol
     - @category.descendants_and_self_nuggets.each do |nugget|
       %li= link_to nugget.title, nugget

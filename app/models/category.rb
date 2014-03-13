@@ -21,4 +21,9 @@ class Category
     #end
     #arr
   end
+
+  def descendants_nuggets
+    Nugget.where(:category.in => descendants.to_a)
+    # TODO: Benchmark this
+  end
 end
