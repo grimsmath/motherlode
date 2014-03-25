@@ -34,11 +34,18 @@
     .col-lg-12
       = f.link_to_add "Add Image", :images, class: "btn btn-default"
       = f.fields_for :images do |images_form|
-        .form-group
-          = f.label :title, 'Image Title'
-          = images_form.text_field :title, class: "form-control"
+        .well
+          .col-lg-2
+            %img{src: "/images/#{images_form.object.id}", width: '100px', height: '100px'}
 
-        .form-group
-          = f.label :caption, "Image Caption"
-          = images_form.text_area :caption, class: "form-control"
-          = images_form.file_field :content
+          .col-lg-10
+            .form-group
+              = f.label :title, 'Image Title'
+              = images_form.text_field :title, class: "form-control"
+
+            .form-group
+              = f.label :caption, "Image Caption"
+              = images_form.text_area :caption, class: "form-control"
+              = images_form.file_field :content
+
+          = images_form.link_to_remove "Remove Image"
