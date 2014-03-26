@@ -12,8 +12,9 @@ User.destroy_all()
 # =============================================
 # Users
 # =============================================
-User.create(email: 'david.king@unf.edu', name: 'David King', password: 'password', admin: true)
-User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark', password: 'password', admin: true)
+User.create(email: 'david.king@unf.edu', name: 'David King',   password: 'password', admin: true)
+User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark',   password: 'password', admin: true)
+User.create(email: 'm@mlw.ac',           name: 'Matt Walston', password: 'password', admin: true)
 
 # remove all the old categories from the database
 Category.destroy_all()
