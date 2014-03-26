@@ -69,3 +69,6 @@ gem 'pry-remote'
 # Use haml for more concise templates
 gem 'haml'
 gem 'haml-rails' # For generators.
+
+# Use foreman for setting local env
+gem 'foreman'
