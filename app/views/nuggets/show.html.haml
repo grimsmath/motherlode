@@ -3,7 +3,8 @@
   .panel.panel-default
     .panel-heading
       %h4= @nugget.title
-
+      %h5= @nugget.user.name
+      %h5= @nugget.category.title
     .panel-body
       = @nugget.content
 

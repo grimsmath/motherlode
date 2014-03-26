@@ -16,8 +16,7 @@ class NuggetsController < ApplicationController
   # GET /nuggets/new
   def new
     @nugget = Nugget.new
-    @nugget.category = params[:category_id]
-    @nugget.user = current_user
+    @nugget.category_id = params[:category_id]
   end
 
   # GET /nuggets/1/edit
@@ -27,7 +26,8 @@ class NuggetsController < ApplicationController
   # POST /nuggets
   # POST /nuggets.json
   def create
-    @nugget = Nugget.new(nugget_params)
+  #  binding.remote_pry
+    @nugget = current_user.nuggets.new(nugget_params)
 
     respond_to do |format|
       if @nugget.save

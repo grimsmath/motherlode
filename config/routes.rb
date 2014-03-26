@@ -17,6 +17,7 @@ Motherlode::Application.routes.draw do
   end
 
   resources :categories do
+    resources :moderators
     resources :nuggets
 
     member do

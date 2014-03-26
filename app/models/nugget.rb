@@ -15,4 +15,8 @@ class Nugget
   field :approved, type: Boolean
 
   # All nugget content is stored in an array of embedded documents which are persisted Content entities.
+  #
+  #def category
+  #  Category.first
+  #end
 end
