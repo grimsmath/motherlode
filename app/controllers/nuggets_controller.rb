@@ -1,7 +1,6 @@
 class NuggetsController < ApplicationController
   before_action :set_nugget, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
-  before_action :authorize_moderation, only: [:edit, :update, :destroy, :approve, :unapprove]
-  before_action :authorize_submission, only: [:create, :new]
+  before_action :authorization
 
   # GET /nuggets
   # GET /nuggets.json
@@ -77,12 +76,8 @@ class NuggetsController < ApplicationController
   end
 
   private
-    def authorize_moderation
-      authorize @nugget, :may_moderate?
-    end
-
-    def authorize_submission
-      authorize Nugget, :may_submit?
+    def authorization
+      authorize(@nugget || Nugget)
     end
 
     # Use callbacks to share common setup or constraints between actions.
