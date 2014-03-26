@@ -5,7 +5,11 @@ class NuggetsController < ApplicationController
   # GET /nuggets
   # GET /nuggets.json
   def index
-    @nuggets = Nugget.all
+    @nuggets = []
+    cats = current_user.admin? ? Category.all : current_user.categories
+    cats.each do |category|
+      @nuggets += category.descendants_and_self_nuggets
+    end
   end
 
   # GET /nuggets/1
