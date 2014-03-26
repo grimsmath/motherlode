@@ -4,14 +4,14 @@
     %h2
       = @category.title
       %span
-        = render partial: 'category_edit_menu', locals: {category: @category}
+        = render partial: 'category_edit_menu', locals: {category: @category} if policy(@category).may_admin?
         = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-primary'
     %p
       Moderators
       - @category.moderators.each do |moderator|
         = moderator.name
     %p= @category.description
-  - if @category.moderators.include? current_user
+  - if policy(@category).may_moderate?
     .panel
       %h3 Nuggets Awaiting Moderation
       = render 'moderation_queue', category: @category
