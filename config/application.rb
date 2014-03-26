@@ -26,3 +26,10 @@ module Motherlode
     # config.i18n.default_locale = :de
   end
 end
+
+console do
+  # Pry is prefered over IRB for better debugging
+  # Block only executes during $ rails console so require is direct
+  require 'pry'
+  config.console = Pry
+end
