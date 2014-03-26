@@ -1,6 +1,11 @@
 Motherlode::Application.routes.draw do
   get "images/show"
-  resources :nuggets
+  resources :nuggets do
+    member do
+      post :approve
+      post :unapprove
+    end
+  end
   resources :images
 
   devise_for :users

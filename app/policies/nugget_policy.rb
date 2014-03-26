@@ -32,4 +32,12 @@ class NuggetPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def approve?
+    user.admin?
+  end
+
+  def unapprove?
+    approve?
+  end
 end

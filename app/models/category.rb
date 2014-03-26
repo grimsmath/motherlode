@@ -27,4 +27,12 @@ class Category
     Nugget.where(:category.in => descendants.to_a)
     # TODO: Benchmark this
   end
+
+  def awaiting_nuggets
+    Nugget.awaiting.where(:category => id)
+  end
+
+  def approved_nuggets
+    Nugget.approved.where(:category => id)
+  end
 end

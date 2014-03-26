@@ -1,6 +1,6 @@
 class NuggetsController < ApplicationController
   before_action :authorize_with_pundit
-  before_action :set_nugget, only: [:show, :edit, :update, :destroy]
+  before_action :set_nugget, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
 
   # GET /nuggets
   # GET /nuggets.json
@@ -68,6 +68,16 @@ class NuggetsController < ApplicationController
     end
   end
 
+  def approve
+    @nugget.update_attribute :approved, true
+    redirect_to :back
+  end
+
+  def unapprove
+    @nugget.update_attribute :approved, false
+    redirect_to :back
+  end
+
   private
     def authorize_with_pundit
       authorize Nugget
@@ -79,6 +89,6 @@ class NuggetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nugget_params
-      params.require(:nugget).permit(:title, :category_id, :user_id, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
+      params.require(:nugget).permit(:title, :category_id, :user_id, :approved, contents_attributes: [:id, :name, :content], images_attributes: [:id, :title, :caption, :content])
     end
 end
