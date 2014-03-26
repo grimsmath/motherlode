@@ -1,24 +1,14 @@
-class NuggetPolicy < ApplicationPolicy
-  attr_reader :user
-
-  def initialize(user, record)
-    @user = user
+class NuggetPolicy < Struct.new(:user, :nugget)
+  def may_moderate?
+    # return true if user.admin?
+    nugget.category.ancestors_and_self.each do |category|
+      return true if category.moderators.include? user
+    end
+    false
   end
 
-  def create?
+  def may_submit?
     user.admin? || user.approved? || Nugget.where(user: user).count < 5
-  end
-
-  def new?
-    user.admin? || user.approved? || Nugget.where(user: user).count < 5
-  end
-
-  def edit?
-    user.admin?
-  end
-
-  def update?
-    user.admin?
   end
 
   def index?
@@ -26,18 +16,6 @@ class NuggetPolicy < ApplicationPolicy
   end
 
   def show?
-    true
-  end
-
-  def destroy?
-    user.admin?
-  end
-
-  def approve?
-    user.admin?
-  end
-
-  def unapprove?
-    approve?
+    nugget.approved? || may_moderate?
   end
 end

@@ -1,20 +1,19 @@
 class NuggetsController < ApplicationController
-  before_action :authorize_with_pundit
   before_action :set_nugget, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
+  before_action :authorize_moderation, only: [:edit, :update, :destroy, :approve, :unapprove]
+  before_action :authorize_submission, only: [:create, :new]
 
   # GET /nuggets
   # GET /nuggets.json
   def index
-    @nuggets = []
-    cats = current_user.admin? ? Category.all : current_user.categories
-    cats.each do |category|
-      @nuggets += category.descendants_and_self_nuggets
-    end
+    authorize Nugget
+    @nuggets = Nugget.all
   end
 
   # GET /nuggets/1
   # GET /nuggets/1.json
   def show
+    authorize @nugget
   end
 
   # GET /nuggets/new
@@ -30,7 +29,6 @@ class NuggetsController < ApplicationController
   # POST /nuggets
   # POST /nuggets.json
   def create
-  #  binding.remote_pry
     @nugget = current_user.nuggets.new(nugget_params)
 
     respond_to do |format|
@@ -79,9 +77,14 @@ class NuggetsController < ApplicationController
   end
 
   private
-    def authorize_with_pundit
-      authorize Nugget
+    def authorize_moderation
+      authorize @nugget, :may_moderate?
     end
+
+    def authorize_submission
+      authorize Nugget, :may_submit?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_nugget
       @nugget = Nugget.find(params[:id])
