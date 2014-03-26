@@ -6,18 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# remove all the users from the database
-User.destroy_all()
-
 # =============================================
 # Users
 # =============================================
 User.create(email: 'david.king@unf.edu', name: 'David King',   password: 'password', admin: true)
 User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark',   password: 'password', admin: true)
 User.create(email: 'm@mlw.ac',           name: 'Matt Walston', password: 'password', admin: true)
-
-# remove all the old categories from the database
-Category.destroy_all()
 
 # =============================================
 # First Coast Green Map
