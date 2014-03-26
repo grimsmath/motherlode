@@ -20,3 +20,8 @@
   .form-group
     = f.label :description
     = f.text_area :description, class: "form-control"
+
+  = f.collection_check_boxes :moderator_ids, User.admins, :id, :name do |b|
+    = b.check_box
+    = b.label
+    %br

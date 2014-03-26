@@ -5,6 +5,7 @@
       = @category.title
       %span
         = render partial: 'category_edit_menu', locals: {category: @category}
+        = button_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-primary'
     %p
       Moderators
       - @category.moderators.each do |moderator|
