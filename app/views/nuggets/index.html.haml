@@ -1,9 +1,7 @@
 .container
   %header
     %h2
-      Manage Nuggets
-      %span
-        = link_to 'New Nugget', new_nugget_path, class: 'btn btn-primary'
+      Moderate Nuggets
   %input.col-md-12#q{autocomplete: 'off', placeholder: 'Filter by...'}
   %table.table.table-striped.table-condensed
     %thead
@@ -24,7 +22,7 @@
             = link_to nugget.user.name, user_path(nugget.user)
           %td
             - if nugget.approved?
-              = 'Approved'
+              = link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unapprove'), unapprove_nugget_path(nugget), method: :post
             - else
-              = 'Not Approved'
+              = link_to raw('<i class="glyphicon glyphicon-thumbs-up"></i> Approve'), approve_nugget_path(nugget), method: :post
           %td= render partial: 'nugget_edit_menu', locals: {nugget: nugget}

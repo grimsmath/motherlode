@@ -1,24 +1,31 @@
-class CategoryPolicy < ApplicationPolicy
-  attr_reader :user
+class CategoryPolicy < Struct.new(:user, :category)
+  def may_moderate?
+    # Catch admin here
+    # return true if user.admin?
+    category.ancestors_and_self.each do |category|
+      return true if category.moderators.include? user
+    end
+    false
+  end
 
-  def initialize(user, record)
-    @user = user
+  def may_admin?
+    user.admin?
   end
 
   def create?
-    user.admin?
+    may_admin?
   end
 
   def new?
-    user.admin?
+    may_admin?
   end
 
   def edit?
-    user.admin?
+    may_admin?
   end
 
   def update?
-    user.admin?
+    may_admin?
   end
 
   def index?
@@ -30,6 +37,10 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    may_admin?
+  end
+
+  def new_subcategory?
+    new?
   end
 end

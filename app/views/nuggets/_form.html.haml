@@ -12,17 +12,14 @@
     .col-lg-12
       .form-group
         = f.text_field :title, class: "form-control", placeholder: "Nugget Title"
-
-  .row
-    .col-lg-6
-      .form-group
-        = f.label :category_id, "Nugget Category"
-        = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: ''}, class: "form-control"
-
-    .col-lg-6
-      .form-group
-        = f.label :user_id, "Author"
-        = f.collection_select :user_id, User.all, :id, :email, {include_blank: ''}, class: "form-control"
+  - if params['action'] == 'edit'
+    .row
+      .col-lg-6
+        .form-group
+          = f.label :category_id, "Nugget Category"
+          = f.collection_select :category_id, Category.all, :id, :indented_title, {include_blank: ''}, class: "form-control"
+  - else
+    = f.hidden_field :category_id, value: @nugget.category.id
 
   .row
     .col-lg-12

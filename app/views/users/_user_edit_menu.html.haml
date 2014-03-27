@@ -5,7 +5,7 @@
     %span.sr-only Toggle Dropdown
   %nav.dropdown-menu
     -if user.approved?
-      %li= link_to raw('<i class="glyphicon glyphicon-list"></i> Assign Categories'), manage_categories_user_path(user)
+      %li{style: 'background:orange'}= link_to raw('<i class="glyphicon glyphicon-list"></i> Assign Categories'), manage_categories_user_path(user)
     -else
       %li= link_to raw('<i class="glyphicon glyphicon-thumbs-up"></i> Approve'), approve_user_path(user), method: :post
     -unless current_page? edit_user_path(user)
@@ -19,4 +19,4 @@
       %li.divider
     -if user.approved?
       %li= link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unapprove'), unapprove_user_path(user), method: :post
-    %li= link_to raw('<i class="glyphicon glyphicon-ban-circle"></i> Disable Account'), disable_user_path(user), method: :post
+    %li{style: 'background:orange'}= link_to raw('<i class="glyphicon glyphicon-ban-circle"></i> Disable Account'), disable_user_path(user), method: :post

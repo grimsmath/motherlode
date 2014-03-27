@@ -1,5 +1,25 @@
 .container
-  .row
-    = render "crumbs"
-    .col-md-12
-      = render 'categories/details'
+  = render "crumbs"
+  %header
+    %h2
+      = @category.title
+      %span
+        = render partial: 'category_edit_menu', locals: {category: @category} if policy(@category).may_admin?
+        = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-primary'
+    %p
+      Moderators
+      - @category.moderators.each do |moderator|
+        = moderator.name
+    %p= @category.description
+  - if policy(@category).may_moderate?
+    .panel
+      %h3 Nuggets Awaiting Moderation
+      = render 'moderation_queue', category: @category
+  %h3 Subcategories
+  %ol
+    - @category.children.each do |child_category|
+      %li= link_to child_category.title, child_category
+  %h3 Nuggets
+  %ol
+    - @category.approved_nuggets.each do |nugget|
+      %li= link_to nugget.title, nugget

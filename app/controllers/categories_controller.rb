@@ -5,17 +5,19 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.roots
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    authorize @category
   end
 
   # GET /categories/new
   def new
     @category = Category.new
+    @category.parent = Category.find(params[:id]) unless params[:id].nil?
   end
 
   # GET /categories/1/edit
@@ -73,6 +75,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:title, :description, :active, :parent_id)
+      params.require(:category).permit(:title, :description, :active, :parent_id, :moderator_ids => [])
     end
 end

@@ -24,5 +24,6 @@
           %td= mail_to user.email
           %td
             %ul.list-unstyled
-              %li= link_to Category.first.title
+              - user.categories.each do |category|
+                %li= link_to category.title, category
           %td= render partial: 'user_edit_menu', locals: {user: user}

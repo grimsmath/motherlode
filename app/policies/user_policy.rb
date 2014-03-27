@@ -1,17 +1,12 @@
-class UserPolicy < ApplicationPolicy
-  attr_reader :user
-
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
+class UserPolicy < Struct.new(:user, :resource)
+  # Ambiguous parameters-- :user is current_user, :resource is an instance of User model
 
   def index?
-    @user.admin?
+    user.admin?
   end
 
   def create?
-    @user.admin?
+    user.admin?
   end
 
   def show?
@@ -19,26 +14,26 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    @user.admin? || @user == @record
+    user.admin? || user == resource
   end
 
   def destroy?
-    @user.admin?
+    user.admin?
   end
 
   def approve?
-    @user.admin?
+    user.admin?
   end
 
   def unapprove?
-    @user.admin?
+    user.admin?
   end
 
   def promote_admin?
-    @user.admin?
+    user.admin?
   end
 
   def demote_admin?
-    @user.admin?
+    user.admin?
   end
 end

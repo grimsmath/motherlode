@@ -1,19 +1,29 @@
-# This seed data provides a default administrator user and optional seed data. When seeding a production deployment,
-# change the default administrator credentials to a temporary yet secure selection. Once deployed, change password.
-# It is recommend that example data be disabled prior to deployment.
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# remove all the users from the database
+User.destroy_all()
 
 # =============================================
 # Users
 # =============================================
-User.create(email: 'david.king@unf.edu', name: 'David King',   password: 'password', admin: true)
-User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark',   password: 'password', admin: true)
-User.create(email: 'm@mlw.ac',           name: 'Matt Walston', password: 'password', admin: true)
+User.create(email: 'david.king@unf.edu', name: 'David King', password: 'password', admin: true)
+User.create(email: 'geoff.wark@unf.edu', name: 'Geoff Wark', password: 'password', admin: true)
+User.create(email: 'm@mlw.ac', name: 'Matt Walston', password: 'password', admin: true)
+User.create(email: 'nikideroin@gmail.com', name: 'Nicole DeRoin', password: 'password', admin: true)
+
+# remove all the old categories from the database
+Category.destroy_all()
 
 # =============================================
 # First Coast Green Map
 # =============================================
 fcgm = Category.create(title: 'First Coast Green Map')
-
 fcgm.children << Category.create(title: 'Green Buildings')
 fcgm.children << Category.create(title: 'Community Gardens')
 fcgm.children << Category.create(title: 'Murray Hill Community Garden')

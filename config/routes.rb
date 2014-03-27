@@ -1,11 +1,15 @@
 Motherlode::Application.routes.draw do
   get "images/show"
-  get "welcome/index"
-  resources :categories
-  resources :nuggets
+  resources :nuggets do
+    member do
+      post :approve
+      post :unapprove
+    end
+  end
   resources :images
 
   devise_for :users
+
   resources :users do
     member do
       post :approve
@@ -17,11 +21,20 @@ Motherlode::Application.routes.draw do
     end
   end
 
+  resources :categories do
+    resources :moderators
+    resources :nuggets
+
+    member do
+      get 'subcategory/new' => 'categories#new'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'categories#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

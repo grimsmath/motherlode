@@ -1,6 +1,5 @@
 class Nugget
   include Mongoid::Document
-  include Mongoid::Tree
   belongs_to :category
   belongs_to :user
 
@@ -12,7 +11,10 @@ class Nugget
 
   field :title, type: String
   field :content, type: String
-  field :approved, type: Boolean
+  field :approved, type: Boolean, default: false
+
+  scope :approved, ->{ where(approved: true) }
+  scope :awaiting, ->{ where(approved: false) }
 
   # All nugget content is stored in an array of embedded documents which are persisted Content entities.
 end
