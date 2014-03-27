@@ -5,14 +5,12 @@ class NuggetsController < ApplicationController
   # GET /nuggets
   # GET /nuggets.json
   def index
-    authorize Nugget
     @nuggets = Nugget.all
   end
 
   # GET /nuggets/1
   # GET /nuggets/1.json
   def show
-    authorize @nugget
   end
 
   # GET /nuggets/new
