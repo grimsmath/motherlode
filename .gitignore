@@ -16,8 +16,8 @@
 /tmp
 
 # Ignort .env to protect credentials
-.env
-.env*
+#.env
+#$.env*
 
 # Supress .idea folder
 .idea
