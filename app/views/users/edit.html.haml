@@ -1,34 +1,40 @@
 .container
-  %header
-    %h2
-      Edit
-      = @user.name || @user.email
-      = render partial: 'user_edit_menu', locals: {user: @user} if current_user.admin?
   = form_for(@user, html: {class: 'form-horizontal', role: 'form'}) do |f|
-    - if @user.errors.any?
-      #error_explanation.alert.alert-danger
-        %h2 #{pluralize @user.errors.count, 'error'} prohibited this user from being saved:
-        %ul
-          - @user.errors.full_messages.each do |msg|
-            %li= msg
-    .form-group
-      = f.label :name, class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :name, class: 'form-control'
-    .form-group
-      = f.label :email, class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :email, class: 'form-control'
-    .form-group
-      = f.label :biography, class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_area :biography, class: 'form-control'
-    .form-group
-      = f.label :password, class: 'col-sm-2 control-label'
-      .col-sm-4
-        = f.password_field :password, class: 'form-control'
-      = f.label 'Confirm', class: 'col-sm-2 control-label'
-      .col-sm-4
-        = f.password_field :password_confirmation, class: 'form-control'
-    = f.submit 'Save User', class: 'btn btn-default'
-    = link_to 'Back', users_path, class: 'btn btn-default'
+    .panel.panel-primary
+      .panel-heading
+        %h2
+          Edit
+          = @user.name || @user.email
+          %nav.pull-right
+            = render partial: 'user_edit_menu', locals: {user: @user} if current_user.admin?
+
+      .panel-body
+        - if @user.errors.any?
+          #error_explanation.alert.alert-danger
+            %h2 #{pluralize @user.errors.count, 'error'} prohibited this user from being saved:
+            %ul
+              - @user.errors.full_messages.each do |msg|
+                %li= msg
+        .form-group
+          = f.label :name, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :email, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_field :email, class: 'form-control'
+        .form-group
+          = f.label :biography, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_area :biography, class: 'form-control'
+        .form-group
+          = f.label :password, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.password_field :password, class: 'form-control'
+          = f.label 'Confirm', class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.password_field :password_confirmation, class: 'form-control'
+
+      .panel-footer
+        = f.submit 'Save User', class: 'btn btn-primary'
+        = link_to 'Back', users_path, class: 'btn btn-default'
