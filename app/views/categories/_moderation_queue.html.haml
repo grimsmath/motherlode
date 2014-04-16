@@ -1,9 +1,15 @@
-%ol
-  - category.awaiting_nuggets.each do |nugget|
-    %li
-      =link_to nugget.title, nugget
-      \ |
-      - if nugget.approved?
-        = link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unapprove'), unapprove_nugget_path(nugget), method: :post
-      - else
-        = link_to raw('<i class="glyphicon glyphicon-thumbs-up"></i> Approve'), approve_nugget_path(nugget), method: :post
+%div.col-md-12
+  - if policy(@category).may_moderate?
+    .list-group
+      %a{ href: "#", class: "list-group-item active" }
+        %h4.list-group-item-heading Nuggets Awaiting Moderation
+        %p.list-group-item-text Nuggets require moderation before they will become visible to the public
+
+      - category.awaiting_nuggets.each do |nugget|
+        %div.list-group-item
+          =link_to nugget.title, nugget
+          \ |
+          - if nugget.approved?
+            = link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unapprove'), unapprove_nugget_path(nugget), method: :post
+          - else
+            = link_to raw('<i class="glyphicon glyphicon-thumbs-up"></i> Approve'), approve_nugget_path(nugget), method: :post

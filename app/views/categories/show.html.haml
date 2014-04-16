@@ -1,25 +1,43 @@
+= render "crumbs"
 .container
-  = render "crumbs"
-  %header
-    %h2
-      = @category.title
-      %span
-        = render partial: 'category_edit_menu', locals: {category: @category} if policy(@category).may_admin?
-        = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-primary'
-    %p
-      Moderators
-      - @category.moderators.each do |moderator|
-        = moderator.name
-    %p= @category.description
-  - if policy(@category).may_moderate?
-    .panel
-      %h3 Nuggets Awaiting Moderation
+  .panel.panel-primary
+    .panel-heading
+      %h2
+        = @category.title
+        %span.pull-right
+          = render partial: 'category_edit_menu', locals: {category: @category} if policy(@category).may_admin?
+          = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-default'
+
+    .panel-body
+      %p.col-lg-12
+        = @category.description
+
+      .col-md-6
+        .list-group
+          %a{href: "#", class: "list-group-item active", title: "Subcategories"}
+            %h4.list-group-item-heading Moderators
+            %p.list-group-item-text Moderators are individuals who ensure that content added to the system are quality in nature
+          - @category.moderators.each do |moderator|
+            %li.list-group-item
+              = moderator.name
+
+      .col-md-6
+        .list-group
+          %a{href: "#", class: "list-group-item active", title: "Subcategories"}
+            %h4.list-group-item-heading Subcategories
+            %p.list-group-item-text The following categories are children of the current category and can contain additional nuggets
+          - if @category.children.empty?
+            %div.list-group-item
+              This category does not contain any subcategories
+          - else
+            - @category.children.each do |child_category|
+              = link_to child_category.title, child_category, class: "list-group-item"
+
+      %div.col-md-12
+        .list-group
+          %a{href: "#", class: "list-group-item active", title: "Subcategories"}
+            %h4.list-group-item-heading Nuggets
+            - @category.approved_nuggets.each do |nugget|
+              = link_to nugget.title, nugget, class: "list-group-item"
+
       = render 'moderation_queue', category: @category
-  %h3 Subcategories
-  %ol
-    - @category.children.each do |child_category|
-      %li= link_to child_category.title, child_category
-  %h3 Nuggets
-  %ol
-    - @category.approved_nuggets.each do |nugget|
-      %li= link_to nugget.title, nugget

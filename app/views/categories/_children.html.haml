@@ -1,6 +1,7 @@
-.list-group
-  %a.list-group-item.active{href: "#"} Subcategories
-  - @category.children.each do |child_category|
-    = link_to child_category.title, child_category, class: "list-group-item"
-  - unless current_user.nil?
-    = link_to 'Add Subcategory', new_category_path, class: "list-group-item list-group-item-success"
+.panel.panel-primary
+  .list-group
+    %a.list-group-item.active{href: "#"} Subcategories
+    - @category.children.each do |child_category|
+      = link_to child_category.title, child_category, class: "list-group-item"
+    - unless current_user.nil?
+      = link_to 'Add Subcategory', new_category_path, class: "list-group-item list-group-item-success"
