@@ -17,9 +17,13 @@
           %a{href: "#", class: "list-group-item active", title: "Subcategories"}
             %h4.list-group-item-heading Moderators
             %p.list-group-item-text Moderators are individuals who ensure that content added to the system are quality in nature
-          - @category.moderators.each do |moderator|
-            %li.list-group-item
-              = moderator.name
+          - if @category.moderators.empty?
+            %div.list-group-item
+              This category does not currently have an assigned moderator
+          - else
+            - @category.moderators.each do |moderator|
+              %li.list-group-item
+                = moderator.name
 
       .col-md-6
         .list-group
@@ -37,6 +41,10 @@
         .list-group
           %a{href: "#", class: "list-group-item active", title: "Subcategories"}
             %h4.list-group-item-heading Nuggets
+          - if @category.approved_nuggets.empty?
+            %div.list-group-item
+              This category does not contain any nuggets
+          - else
             - @category.approved_nuggets.each do |nugget|
               = link_to nugget.title, nugget, class: "list-group-item"
 
