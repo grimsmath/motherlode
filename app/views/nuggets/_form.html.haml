@@ -46,3 +46,21 @@
               = images_form.file_field :content
 
           = images_form.link_to_remove "Remove Image"
+
+  .row
+    .col-lg-12
+      = f.link_to_add 'Add Location', :locations, class: "btn btn-default"
+      = f.fields_for :locations do |locations_form|
+        .well
+          .col-lg-6
+            .form-group
+              = locations_form.label :address, 'Address'
+              = locations_form.text_area :address, class: "form-control"
+          .col-lg-6
+            .form-group
+              = locations_form.label :latitude, 'Latitude'
+              = locations_form.text_field :latitude, class: 'form-control'
+              = locations_form.label :longitude, 'Longitude'
+              = locations_form.text_field :longitude, class: 'form-control'
+
+          = locations_form.link_to_remove "Remove Location"

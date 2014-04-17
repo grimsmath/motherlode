@@ -9,6 +9,9 @@ class Nugget
   embeds_many :images, cascade_callbacks: true
   accepts_nested_attributes_for :images, :allow_destroy => true
 
+  embeds_many :locations, cascade_callbacks: true
+  accepts_nested_attributes_for :locations, :allow_destroy => true
+
   field :title, type: String
   field :content, type: String
   field :approved, type: Boolean, default: false
