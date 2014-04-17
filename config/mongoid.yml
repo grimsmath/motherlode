@@ -78,7 +78,7 @@ production:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      uri: 'mongodb://motherlode:password@ds053648.mongolab.com:53648/motherlode'
+      uri: 'mongodb://swampco:swampco@ds053648.mongolab.com:53648/motherlode'
       # uri: <%= ENV['MONGO_URI'] %>
       # database: park-experience
       # Provides the hosts the default session can connect to. Must be an array

@@ -8,7 +8,6 @@
       - category.awaiting_nuggets.each do |nugget|
         %div.list-group-item
           =link_to nugget.title, nugget
-          \ |
           - if nugget.approved?
             = link_to raw('<i class="glyphicon glyphicon-thumbs-down"></i> Unapprove'), unapprove_nugget_path(nugget), method: :post
           - else
