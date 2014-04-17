@@ -10,3 +10,4 @@ $().ready ->
         $(this).show()
       else
         $(this).hide()
+
