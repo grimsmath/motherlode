@@ -1,4 +1,3 @@
-
 = nested_form_for(@nugget, html: { :role => "form" }) do |f|
   - if @nugget.errors.any?
     #error_explanation.alert.alert-danger
@@ -31,6 +30,10 @@
   .row
     .col-lg-12
       = f.link_to_add 'Add Image', :images, class: 'btn btn-default'
+      = f.link_to_add 'Add Location', :locations, class: 'btn btn-default', :data => { :target => "#locations" }
+
+  .row
+    .col-lg-12
       = f.fields_for :images do |images_form|
         .well
           .col-lg-2
@@ -46,24 +49,24 @@
               = images_form.text_area :caption, class: 'form-control'
               = images_form.file_field :content
 
-          = images_form.link_to_remove 'Remove Image'
+          = images_form.link_to_remove 'Remove Image', class: 'btn btn-default'
 
-  .row
-    .col-lg-12
-      = f.link_to_add 'Add Location', :locations, class: 'btn btn-default'
-      = f.fields_for :locations do |locations_form|
-        .well
-          .col-lg-12
-            .form-group
-              = locations_form.label :address, 'Address'
-              = locations_form.text_area :address, class: 'form-control', id: 'address', onblur: 'codeAddress()'
-          .col-lg-6
-            .form-group
-              = locations_form.label :latitude, 'Latitude'
-              = locations_form.text_field :latitude, class: 'form-control', id: 'latitude'
-          .col-lg-6
-            .form-group
-              = locations_form.label :longitude, 'Longitude'
-              = locations_form.text_field :longitude, class: 'form-control', id: 'longitude'
+  %locations
+    .row
+      .col-lg-12
+        = f.fields_for :locations do |locations_form|
+          .well
+            .col-lg-12
+              .form-group
+                = locations_form.label :address, 'Address'
+                = locations_form.text_area :address, class: 'form-control', id: 'address', onblur: 'codeAddress()'
+            .col-lg-6
+              .form-group
+                = locations_form.label :latitude, 'Latitude'
+                = locations_form.text_field :latitude, class: 'form-control', id: 'latitude'
+            .col-lg-6
+              .form-group
+                = locations_form.label :longitude, 'Longitude'
+                = locations_form.text_field :longitude, class: 'form-control', id: 'longitude'
 
-          = locations_form.link_to_remove 'Remove Location'
+            = locations_form.link_to_remove 'Remove Location', class: 'btn btn-default'
