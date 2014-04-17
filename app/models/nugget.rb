@@ -19,5 +19,9 @@ class Nugget
   scope :approved, ->{ where(approved: true) }
   scope :awaiting, ->{ where(approved: false) }
 
+  def indented_title
+    title
+  end
+
   # All nugget content is stored in an array of embedded documents which are persisted Content entities.
 end
