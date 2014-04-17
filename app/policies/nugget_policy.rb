@@ -1,6 +1,6 @@
 class NuggetPolicy < Struct.new(:user, :nugget)
   def may_moderate?
-    #return true if user.admin?
+    return true if user.admin?
     # Determine if the user is a moderator for the category.
     # TODO: Investigate if possible without instantiation to conserve memory.  Kind of hackish.
     CategoryPolicy.new(user, nugget.category).may_moderate?
