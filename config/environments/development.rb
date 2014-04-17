@@ -28,5 +28,4 @@ Motherlode::Application.configure do
   silence_warnings do
     require 'pry-remote'
   end
-  
 end
