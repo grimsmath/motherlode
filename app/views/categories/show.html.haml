@@ -6,7 +6,7 @@
         = @category.title
         %span.pull-right
           = render partial: 'category_edit_menu', locals: {category: @category} if current_user && policy(@category).may_admin?
-          = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-default'
+          = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-default' if current_user
 
     .panel-body
       %p.col-lg-12
