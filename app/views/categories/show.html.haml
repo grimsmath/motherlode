@@ -48,4 +48,4 @@
             - @category.approved_nuggets.each do |nugget|
               = link_to nugget.title, nugget, class: "list-group-item"
 
-      = render 'moderation_queue', category: @category
+      = render 'moderation_queue', category: @category if policy(@category).may_moderate?
