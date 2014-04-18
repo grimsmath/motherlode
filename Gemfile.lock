@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 229315900cc8bb196a2d5eafac0b6ffd57477172
+  revision: 030442edebe25ec19c66f37f51b46db22ae25850
   specs:
     mongoid (4.0.0.beta1)
       activemodel (>= 4.0.0)
@@ -131,7 +131,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.0)
+    rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
     sass (3.2.19)
