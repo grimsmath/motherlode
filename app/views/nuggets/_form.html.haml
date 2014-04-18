@@ -92,4 +92,4 @@
                     .form-group
                       = locations_form.link_to_remove 'Remove', class: 'btn btn-default'
         .panel-footer
-          = f.link_to_add 'Add Location', :locations, class: 'btn btn-primary', :data => { :target => "#locations" }
+          = f.link_to_add 'Add Location', :locations, class: 'btn btn-primary', :id => 'location-add-button', :data => { :target => "#locations" }
