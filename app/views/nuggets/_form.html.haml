@@ -47,7 +47,7 @@
                 %th Actions
             %tbody
               = f.fields_for :images, :wrapper => false do |images_form|
-                %tr
+                %tr.fields
                   %td
                     %img{src: "/images/#{images_form.object.id}", width: '100px', height: '100px'}
                     = images_form.file_field :content
@@ -78,16 +78,16 @@
                 %th Actions
             %tbody
               = f.fields_for :locations, :wrapper => false do |locations_form|
-                %tr
+                %tr.fields
                   %td
                     .form-group
-                      = locations_form.text_area :address, class: 'form-control', id: 'address', onblur: 'codeAddress()'
+                      = locations_form.text_area :address, class: 'form-control address', onblur: 'codeAddress(this)'
                   %td
                     .form-group
-                      = locations_form.text_field :latitude, class: 'form-control', id: 'latitude'
+                      = locations_form.text_field :latitude, class: 'form-control latitude'
                   %td
                     .form-group
-                      = locations_form.text_field :longitude, class: 'form-control', id: 'longitude'
+                      = locations_form.text_field :longitude, class: 'form-control longitude'
                   %td
                     .form-group
                       = locations_form.link_to_remove 'Remove', class: 'btn btn-default'

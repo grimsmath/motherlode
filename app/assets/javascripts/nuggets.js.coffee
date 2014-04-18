@@ -10,5 +10,3 @@ $().ready ->
         $(this).show()
       else
         $(this).hide()
-  $('#location-add-button').click ->
-    $('#location-add-button').hide()

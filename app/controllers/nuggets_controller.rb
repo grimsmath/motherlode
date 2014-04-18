@@ -87,7 +87,7 @@ class NuggetsController < ApplicationController
     def nugget_params
       params.require(:nugget).permit(:title, :category_id, :user_id, :approved,
                                      contents_attributes: [:id, :name, :content],
-                                     images_attributes: [:id, :title, :caption, :content],
-                                     locations_attributes: [:id, :address, :latitude, :longitude])
+                                     images_attributes: [:id, :title, :caption, :content, :_destroy],
+                                     locations_attributes: [:id, :address, :latitude, :longitude, :_destroy])
     end
 end
