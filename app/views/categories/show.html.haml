@@ -5,7 +5,7 @@
       %h2
         = @category.title
         %span.pull-right
-          = render partial: 'category_edit_menu', locals: {category: @category} if policy(@category).may_admin?
+          = render partial: 'category_edit_menu', locals: {category: @category} if current_user && policy(@category).may_admin?
           = link_to 'Create Nugget', new_category_nugget_path(@category), class: 'btn btn-default'
 
     .panel-body
@@ -48,4 +48,4 @@
             - @category.approved_nuggets.each do |nugget|
               = link_to nugget.title, nugget, class: "list-group-item"
 
-      = render 'moderation_queue', category: @category if policy(@category).may_moderate?
+      = render 'moderation_queue', category: @category if current_user && policy(@category).may_moderate?

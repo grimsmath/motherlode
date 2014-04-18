@@ -1,7 +1,6 @@
 class CategoryPolicy < Struct.new(:user, :category)
   def may_moderate?
     # Catch admin here
-    return false unless current_user
     return true if user.admin?
     category.ancestors_and_self.each do |category|
       return true if category.moderators.include? user
@@ -10,7 +9,6 @@ class CategoryPolicy < Struct.new(:user, :category)
   end
 
   def may_admin?
-    return false unless current_user
     user.admin?
   end
 
