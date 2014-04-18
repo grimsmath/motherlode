@@ -13,6 +13,10 @@ class UserPolicy < Struct.new(:user, :resource)
     true
   end
 
+  def edit?
+    update?
+  end
+
   def update?
     user.admin? || user == resource
   end

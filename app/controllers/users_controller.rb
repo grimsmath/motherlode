@@ -91,7 +91,7 @@ class UsersController < ApplicationController
 
   private
     def authorization
-      #authorize(@user || User)
+      authorize(@user || User)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
