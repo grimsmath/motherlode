@@ -1,22 +1,23 @@
 .container
-  %p#notice= notice
   .panel.panel-default
     .panel-heading
       %h4= @nugget.title
-      %h5= @nugget.user.name
-      %h5= @nugget.category.title
+      %h5= "Category: " + @nugget.category.title
+      %h5= "Contributor: " + @nugget.user.name
     .panel-body
-      = @nugget.content
 
-      - @nugget.images.each do |content|
-        %h5= content.title
-        %h6= content.caption
-        %img{src: "/images/#{content._id}", width: "400px" }
+      .col-md-6
+        - @nugget.images.each do |content|
+          %h5= content.title
+          %h6= content.caption
+          %img{src: "/images/#{content._id}", width: "400px" }
 
-      - @nugget.locations.each do |location|
-        %h5 Location
-        %p= location.address
-        %p= "#{location.latitude}, #{location.longitude}"
+      .col-md-6
+        %p= @nugget.content
+        - @nugget.locations.each do |location|
+          %h5 Location
+          %p= location.address
+          %p= "#{location.latitude}, #{location.longitude}"
 
     .panel-footer
       - unless current_user.nil?

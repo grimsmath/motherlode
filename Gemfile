@@ -70,5 +70,8 @@ gem 'pry-remote'
 gem 'haml'
 gem 'haml-rails' # For generators.
 
+# CKEditor gem
+gem 'ckeditor'
+
 # Use foreman for setting local env
 gem 'foreman'

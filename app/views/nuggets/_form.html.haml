@@ -30,7 +30,8 @@
     .col-lg-12
       .form-group
         = f.label :content, "Content Body"
-        = f.text_area :content, class: "form-control"
+        = f.cktext_area :content, :value => 'Default value', :id => 'sometext'
+        -#= f.text_area :content, class: "form-control"
 
   .row
     .col-md-12
