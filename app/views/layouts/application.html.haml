@@ -7,15 +7,6 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     %script{type: 'text/javascript', src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDpiQh_wSLAR4svH3X32tFm5hX12fUpNXo&sensor=false'}
     = csrf_meta_tags
-    :css
-      body {
-        padding-top: 70px;
-        background: image-url('/assets/bg-home-2.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-      }
 
   %body{role: "document"}
     = render "partials/sitenav"

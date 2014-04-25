@@ -14,3 +14,12 @@
 
 @import "bootstrap";
 @import "fontawesome";
+
+body {
+  padding-top: 70px;
+  background: image-url('bg-home-2.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
