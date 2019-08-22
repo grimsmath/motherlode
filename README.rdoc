@@ -2,7 +2,7 @@
 
 Motherlode is a social CMS for managing educational content.
 
-* Requires ruby-2.1
-* Requires rails-4.0
-* Requires beta mongoid for rails 4 compatibility
+* Requires ruby-2.6.3
+* Requires rails-6.0.0.rc1
+* Requires beta mongoid for rails 6 compatibility
 * Database configuration in env
