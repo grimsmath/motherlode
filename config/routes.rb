@@ -1,4 +1,5 @@
 Motherlode::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get "images/show"
   resources :nuggets do
     member do

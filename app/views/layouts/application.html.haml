@@ -5,6 +5,7 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag Ckeditor.cdn_url
     %script{type: 'text/javascript', src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDpiQh_wSLAR4svH3X32tFm5hX12fUpNXo&sensor=false'}
     = csrf_meta_tags
 
