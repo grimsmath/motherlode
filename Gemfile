@@ -73,6 +73,7 @@ gem 'haml'
 # CKEditor gem
 gem 'ckeditor', :git => 'git://github.com/galetahub/ckeditor.git'
 gem 'paperclip'
+gem 'mongoid-paperclip'
 
 # Use foreman for setting local env
 gem 'foreman'
