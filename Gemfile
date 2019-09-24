@@ -71,7 +71,7 @@ gem 'pry-remote'
 gem 'haml'
 
 # CKEditor gem
-gem 'ckeditor'
+gem 'ckeditor', :git => 'git://github.com/galetahub/ckeditor.git'
 
 # Use foreman for setting local env
 gem 'foreman'
